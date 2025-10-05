@@ -8,7 +8,7 @@ import Farmers from "./components/Farmers";
 import Livestock from "./components/Livestock";
 import Reports from "./components/Reports";
 import FarmerDetails from "./components/FarmerDetails";
-import Addtask from "./components/Addtask";
+// import Addtask from "./components/Addtask";
 import Login from "./components/Login";
 import Hero from "../page/Hero";
 import Farms from "../page/Farms";
@@ -40,7 +40,7 @@ export default function App() {
           <Route path="/farmers/:id" element={<FarmerDetails />} />
           <Route path="/livestock" element={<Livestock />} />
           <Route path="/reports" element={<Reports />} />
-          <Route path="/addtask" element={<Addtask />} />
+          {/* <Route path="/addtask" element={<Addtask />} /> */}
           <Route path="/login" element={<Login />} />
         </Route>
       </Routes>

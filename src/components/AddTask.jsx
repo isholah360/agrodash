@@ -17,7 +17,7 @@ function Addtask() {
       [name]: value
     }));
 
-    // Clear error when user starts typing
+ 
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -230,7 +230,7 @@ function Addtask() {
                 disabled={loading}
                 className="flex-1 sm:flex-none bg-gray-100 hover:bg-gray-200 disabled:bg-gray-50 text-gray-700 py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center"
               >
-                {/* <FaX className="w-4 h-4 mr-2" /> */}
+              
                 Reset
               </button>
             </div>
