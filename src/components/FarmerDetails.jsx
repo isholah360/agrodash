@@ -11,8 +11,8 @@ export const officers = [
     image: "https://randomuser.me/api/portraits/men/1.jpg", 
     farmers: [
       {
-        id: 101,
-        name: "Farmer A",
+        FarmId: 101,
+        farmName: "Farmer A",
         phone: "09099990001",
         address: "123 Farm Road, Oyo",
         image: "https://randomuser.me/api/portraits/men/11.jpg",
@@ -26,8 +26,8 @@ export const officers = [
         ]
       },
       {
-        id: 102,
-        name: "Farmer B",
+        FarmId: 102,
+        farmName: "Farmer B",
         phone: "08099990002",
         address: "456 Green Lane, Ibadan",
         image: "https://randomuser.me/api/portraits/women/12.jpg",
@@ -41,8 +41,8 @@ export const officers = [
         ]
       },
       {
-        id: 103,
-        name: "Farmer C",
+        FarmId: 103,
+        farmName: "Farmer C",
         phone: "08099290003",
         address: "789 Crop Street, Saki",
         image: "https://randomuser.me/api/portraits/men/13.jpg",
@@ -63,8 +63,8 @@ export const officers = [
     image: "https://randomuser.me/api/portraits/men/1.jpg",  // optional image field
     farmers: [
       {
-        id: 101,
-        name: "Farmer A",
+        FarmId: 101,
+        farmName: "Farmer A",
         phone: "08099220007",
         address: "123 Farm Road, Oyo",
         image: "https://randomuser.me/api/portraits/men/11.jpg",
@@ -78,8 +78,8 @@ export const officers = [
         ]
       },
       {
-        id: 102,
-        name: "Farmer B",
+        FarmId: 102,
+        farmName: "Farmer B",
         phone: "08099190000",
         address: "456 Green Lane, Ibadan",
         image: "https://randomuser.me/api/portraits/women/12.jpg",
@@ -93,8 +93,8 @@ export const officers = [
         ]
       },
       {
-        id: 103,
-        name: "Farmer C",
+        FarmId: 103,
+        farmName: "Farmer C",
         phone: "08097990009",
         address: "789 Crop Street, Saki",
         image: "https://randomuser.me/api/portraits/men/13.jpg",
@@ -110,13 +110,13 @@ export const officers = [
     ],
      id: 3,
     name: "Kola Smith",
-    email: "ade.johnson@example.com",
+    email: "johnson@gmail.com",
     phone: "08013545670",
     image: "https://randomuser.me/api/portraits/men/1.jpg",  // optional image field
     farmers: [
       {
-        id: 101,
-        name: "Farmer A",
+        FarmId: 101,
+        farmName: "Farmer A",
         phone: "08096990001",
         address: "123 Farm Road, Oyo",
         image: "https://randomuser.me/api/portraits/men/11.jpg",
@@ -130,8 +130,8 @@ export const officers = [
         ]
       },
       {
-        id: 102,
-        name: "Farmer B",
+       FarmId: 102,
+        farmName: "Farmer B",
         phone: "08099890002",
         address: "456 Green Lane, Ibadan",
         image: "https://randomuser.me/api/portraits/women/12.jpg",
@@ -145,8 +145,8 @@ export const officers = [
         ]
       },
       {
-        id: 103,
-        name: "Farmer C",
+        FarmId: 103,
+        farmName: "Farmer C",
         phone: "08099991003",
         address: "789 Crop Street, Saki",
         image: "https://randomuser.me/api/portraits/men/13.jpg",
