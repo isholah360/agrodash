@@ -58,7 +58,7 @@ const CreateFarmer = () => {
     try {
       const token = localStorage.getItem("authToken");
 
-      const response = await fetch(`${baseUrl}/api/v1/Farmer/Create`, {
+      const response = await fetch(`/api/v1/Farmer/Create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

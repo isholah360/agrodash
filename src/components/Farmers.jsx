@@ -262,7 +262,7 @@ export default function GetFarmer() {
          setTheiD(Id)
 
         const response = await fetch(
-          `${baseUrl}/api/v1/Farmer/GetFarmers`,
+          `/api/v1/Farmer/GetFarmers`,
           {
             method: "GET",
             headers: {

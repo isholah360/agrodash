@@ -107,7 +107,7 @@ const CreateFarmForm = () => {
 
       console.log("Submitting payload:", payload);
 
-      const response = await fetch(`${baseUrl}/api/farms/register`, {
+      const response = await fetch(`/api/farms/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
