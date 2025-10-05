@@ -17,18 +17,19 @@ import CreateFarmer from "./page/createFarmer";
 import About from "./page/about";
 import GLayout from "./components/gLayout";
 import Service from "../page/services";
+import AddUser from "./page/addUser";
+import PublicOfficer from "./page/publicOfficer";
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<GLayout/>}>
-         <Route path="/" element={<Hero />} />
-         <Route path="/createfarm" element={<CreateFarmForm />} />
-         <Route path="/createfarmer" element={<CreateFarmer />} />
-         <Route path="/about" element={<About />} />
-         <Route path="/whatwedo" element={<Service />} />
-         <Route path="/login" element={<Login />} />
+        <Route element={<GLayout />}>
+          <Route path="/" element={<Hero />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/whatwedo" element={<Service />} />
+          <Route path="/user" element={<PublicOfficer/>} />
+          <Route path="/login" element={<Login />} />
         </Route>
         <Route element={<Layout />}>
           {/* <Route path="/" element={<Hero />} /> */}
@@ -37,6 +38,9 @@ export default function App() {
           <Route path="/officer/:id" element={<OfficerDetails />} />
           <Route path="/farmers" element={<Farmers />} />
           <Route path="/farms" element={<Farms />} />
+          <Route path="/adduser" element={<AddUser />} />
+          <Route path="/createfarm" element={<CreateFarmForm />} />
+          <Route path="/createfarmer" element={<CreateFarmer />} />
           <Route path="/farmers/:id" element={<FarmerDetails />} />
           <Route path="/livestock" element={<Livestock />} />
           <Route path="/reports" element={<Reports />} />

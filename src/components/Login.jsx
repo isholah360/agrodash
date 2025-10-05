@@ -21,7 +21,7 @@ const Login = () => {
       const encodedUserName = encodeURIComponent(userName);
       const encodedPassword = encodeURIComponent(password);
 
-      // IMPORTANT: Use GET method explicitly
+   
       const response = await fetch(
         `/api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
         {
@@ -33,7 +33,7 @@ const Login = () => {
         }
       );
 
-      console.log("Response status:", response.status);
+      // console.log("Response status:", response.status);
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => null);
@@ -48,7 +48,9 @@ const Login = () => {
       if (loginData.data) {
         localStorage.setItem("authToken", loginData.data.data);
         const payload = jwtDecode(loginData.data.data);
+        console.log("Decoded JWT payload:", payload);
         localStorage.setItem("user", payload);
+        localStorage.setItem("userId", payload.UserId);
         setUserRole(payload.role);
         if (payload.role === "1") {
           navigate("/dashboard");
@@ -59,7 +61,6 @@ const Login = () => {
 
       setSuccess("Login successful!");
 
-      // navigate("/");
     } catch (err) {
       setError(err.message || "Something went wrong.");
       console.error("Login error:", err);

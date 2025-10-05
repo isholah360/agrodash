@@ -4,8 +4,6 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
   const storedUser = localStorage.getItem("user");
   const user = storedUser ? JSON.parse(storedUser) : null;
-
-  // If not logged in or role isn't 1, redirect to home
   if (!user || user.role !== "1") {
     return <Navigate to="/" replace />;
   }
@@ -32,7 +30,7 @@ export default ProtectedRoute;
 // import Farms from "../page/Farms";
 // import CreateFarmForm from "./page/createFarm";
 // import CreateFarmer from "./page/createFarmer";
-// import ProtectedRoute from "./components/ProtectedRoute"; // 👈 import it
+// import ProtectedRoute from "./components/ProtectedRoute"; 
 
 // export default function App() {
 //   return (
