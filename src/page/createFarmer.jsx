@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 const CreateFarmer = () => {
   const [formData, setFormData] = useState({
     officerId: 0,
@@ -56,7 +58,7 @@ const CreateFarmer = () => {
     try {
       const token = localStorage.getItem("authToken");
 
-      const response = await fetch("/api/v1/Farmer/Create", {
+      const response = await fetch(`${baseUrl}/api/v1/Farmer/Create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

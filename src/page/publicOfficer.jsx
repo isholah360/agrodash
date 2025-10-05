@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default function PublicOfficer() {
   const [farmers, setFarmers] = useState([]);
@@ -14,7 +15,7 @@ export default function PublicOfficer() {
         const Id = localStorage.getItem("userId");
         setTheId(parseInt(Id)); 
 
-        const response = await fetch("/api/v1/Farmer/GetFarmers", {
+        const response = await fetch(`${baseUrl}/api/v1/Farmer/GetFarmers`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

@@ -246,6 +246,8 @@
 import { useEffect, useState } from "react";
 import React from "react";
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 export default function GetFarmer() {
   const [farmers, setFarmers] = useState([]);
   const [theiD, setTheiD] = useState();
@@ -260,7 +262,7 @@ export default function GetFarmer() {
          setTheiD(Id)
 
         const response = await fetch(
-          "/api/v1/Farmer/GetFarmers",
+          `${baseUrl}/api/v1/Farmer/GetFarmers`,
           {
             method: "GET",
             headers: {

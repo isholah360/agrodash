@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +25,7 @@ const Login = () => {
 
    
       const response = await fetch(
-        `/api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
+        `${baseUrl}/api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
         {
           method: "POST",
           headers: {

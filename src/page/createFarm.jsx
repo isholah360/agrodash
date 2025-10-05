@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 const CreateFarmForm = () => {
   const [farmerId, setFarmerId] = useState("");
   const [formData, setFormData] = useState({
@@ -105,7 +107,7 @@ const CreateFarmForm = () => {
 
       console.log("Submitting payload:", payload);
 
-      const response = await fetch("/api/farms/register", {
+      const response = await fetch(`${baseUrl}/api/farms/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
