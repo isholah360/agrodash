@@ -25,7 +25,7 @@ const Login = () => {
 
    
       const response = await fetch(
-        `${baseUrl}/api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
+        `/api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
         {
           method: "POST",
           headers: {
