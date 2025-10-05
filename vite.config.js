@@ -15,7 +15,7 @@ export default defineConfig({
         target:"http://localhost:5000",
         changeOrigin: true,
         secure: false,gti
-        rewrite: (path) => path.replace(/^\/api/, '/api')
+        // rewrite: (path) => path.replace(/^\/api/, '/api')
       },
       '/api': {
         target: 'https://oyo-agri-backend-production.up.railway.app',
