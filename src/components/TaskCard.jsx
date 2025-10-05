@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const TaskCard = ({ title, progress, color, users }) => {
+const TaskCard = ({ title, progress, color, users, bg }) => {
   const colors = {
     pink: 'bg-pink-500',
     green: 'bg-green-500',
@@ -11,7 +11,7 @@ const TaskCard = ({ title, progress, color, users }) => {
   const bgColor = colors[color] || colors.pink;
 
   return (
-    <div className="mb-4 p-4 rounded-xl bg-white border border-gray-200 shadow-sm">
+    <div className={`mb-4 p-4 rounded-xl bg-white border border-gray-200 shadow-sm ${bg}`} style={{ background: `${'green-500'}` }} >
       <div className="flex justify-between items-center mb-2">
         <h4 className="font-medium text-gray-800">{title}</h4>
         <div className="flex -space-x-1">

@@ -1,11 +1,11 @@
 // components/Header.jsx
-import { FaSearch, FaBell, FaSun } from 'react-icons/fa';
+import { FaSearch, FaBell, FaSun, FaUser } from 'react-icons/fa';
 import React, { useState, useRef, useEffect } from 'react';
 
 const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const searchRef = useRef(null);
-
+ const user = "" // Simulating user authentication
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,11 +54,16 @@ const Header = () => {
         {/* Other icons */}
         <FaBell className="text-gray-600 cursor-pointer" size={18} />
         <FaSun className="text-gray-600 cursor-pointer" size={18} />
-        {/* <img
+
+        { user ? <>
+         { <img
           src="https://randomuser.me/api/portraits/women/45.jpg"
           alt="User"
           className="w-8 h-8 rounded-full"
-        /> */}
+        />} 
+        </> : <FaUser/>}
+
+      
       </div>
     </header>
   );

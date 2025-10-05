@@ -10,6 +10,7 @@ const officers = [
     name: "Adebola Johnson",
     email: "adebola.johnson@example.com",
     phone: "08012345678",
+    lga: "Igbeti",
     farmers: [
       {
         id: 101,
@@ -54,6 +55,7 @@ const officers = [
     name: "Tope Alabi",
     email: "tope.alabi@example.com",
     phone: "08023456789",
+    lga: "Iseyin",
     farmers: [
       {
         id: 201,
@@ -98,6 +100,7 @@ const officers = [
     name: "Mike Okon",
     email: "mike.okon@example.com",
     phone: "08034567890",
+    lga: "Saki",
     farmers: [
       {
         id: 301,
@@ -142,6 +145,7 @@ const officers = [
     name: "Bola Akin",
     email: "bola.akin@example.com",
     phone: "08045678901",
+    lga: "Ogbomoso",
     farmers: [
       {
         id: 401,
@@ -185,7 +189,7 @@ const officers = [
     id: 5,
     name: "Grace Eze",
     email: "grace.eze@example.com",
-    phone: "08056789012",
+    lga: "Ojoo",
     farmers: [
       {
         id: 501,
@@ -261,6 +265,7 @@ const Officer = () => {
                   title={officer.name}
                   value={officer.email}
                   phone={officer.phone}
+                  lga={`LGA: ${officer.lga}`}
                   color="blue"
                 />
 

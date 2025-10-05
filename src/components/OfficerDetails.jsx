@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { FaArrowLeft, FaUser } from "react-icons/fa";
 import ChartComponent from "./ChartComponent";
 
@@ -277,9 +277,11 @@ const OfficerDetails = () => {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6 ">
           {officer.farmers.map((farmer) => (
-            <div key={farmer.id} className="bg-gray-100 p-4 rounded-lg">
+            <>
+            <Link to={`/farmers/${farmer.id}`} className="mt-2">
+            <div key={farmer.id} className="bg-gray-100 p-4 rounded-lg mt-2">
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
                 {farmer.name}
               </h3>
@@ -289,13 +291,15 @@ const OfficerDetails = () => {
                   <h4 className="text-sm font-semibold text-gray-700 mb-1">
                     Farms
                   </h4>
-                  <ul className="list-disc list-inside text-sm text-gray-600">
-                    {farmer.farms.map((farm) => (
-                      <li key={farm.id}>
-                        {farm.name} - {farm.location}
-                      </li>
-                    ))}
-                  </ul>
+              
+                    <ul className="list-disc list-inside text-sm text-gray-600">
+                      {farmer.farms.map((farm) => (
+                        <li key={farm.id}>
+                          {farm.name} - {farm.location}
+                        </li>
+                      ))}
+                    </ul>
+                 
                 </div>
 
                 <div>
@@ -312,14 +316,14 @@ const OfficerDetails = () => {
                 </div>
               </div>
             </div>
+            </Link>
+            </>
           ))}
         </div>
-
       </div>
       <div className="mt-6 bg-gray-100 p-6 rounded-xl shadow-sm border border-gray-200">
-        <ChartComponent/>
+        <ChartComponent />
       </div>
-      
     </div>
   );
 };

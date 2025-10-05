@@ -8,6 +8,7 @@ const Officercard = ({
   subtitle, 
   emoji, 
   icon, 
+  lga,
   progress, 
   color, 
   tag, 
@@ -46,6 +47,7 @@ const Officercard = ({
           </div>
           <div className="text-sm font-semibold text-gray-900 mb-3">{value}</div>
           <div className="text-xl md:text-xl font-bold text-gray-900 mb-3">{phone}</div>
+          <div className="text-xl md:text-xl font-bold text-gray-900 mb-3">{lga}</div>
           {subtitle && <p className="text-5xl py-5 absolute right-3  text-gray-500 mb-4 ">{emoji}</p>}
 
           {tag && (

@@ -5,6 +5,14 @@ import DashboardCard from "./DashboardCard";
 import ProjectTable from "./ProjectTable";
 
 import Officer from "./Officer";
+import TaskCard from "./TaskCard";
+import Tracker from "./Tracker";
+import ChartCard from "./ChartCard";
+ const colors = {
+    pink: 'bg-pink-500',
+    green: 'bg-green-500',
+    yellow: 'bg-yellow-500',
+  };
 
 function Home() {
   const [activeTab, setActiveTab] = useState("Dashboard");
@@ -57,6 +65,40 @@ function Home() {
                 Officers
               </h3>
               <ProjectTable />
+            </div>
+            <div className="bg-white rounded-xl flex shadow-sm border border-gray-200 p-5 mt-10">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <ChartCard />
+
+                <Tracker />
+
+                <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                    Today Tasks
+                  </h3>
+                  <TaskCard
+                    title="Farmers Meeting"
+                    progress={58}
+                    color="pink"
+                    users={3}
+                     bg="bg-brown-100"
+                  />
+                  <TaskCard
+                    title="Meeting"
+                    progress={80}
+                    color="green"
+                    users={2}
+                    bg="bg-yellow-100"
+                  />
+                  <TaskCard
+                    title="Farm Inspection"
+                    progress={35}
+                    color="yellow"
+                    users={3}
+                     bg="bg-gray-800"
+                  />
+                </div>
+              </div>
             </div>
           </>
         )}

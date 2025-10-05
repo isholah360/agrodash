@@ -11,6 +11,7 @@ const Sidebar = ({ closeSidebar }) => {
     { label: 'Farmers', icon: '👨‍🌾', page: '/farmers' },
     { label: 'Farms', icon: '🚜', page: '/farms' },
     { label: 'LivesStocks', icon: '🐄', page: '/livestock' },
+    { label: 'AddTask', icon: '📝', page: '/addtask' },
   ];
 
   return (
