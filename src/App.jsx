@@ -27,7 +27,7 @@ export default function App() {
          <Route path="/createfarm" element={<CreateFarmForm />} />
          <Route path="/createfarmer" element={<CreateFarmer />} />
          <Route path="/about" element={<About />} />
-         <Route path="/service" element={<Service />} />
+         <Route path="/whatwedo" element={<Service />} />
          <Route path="/login" element={<Login />} />
         </Route>
         <Route element={<Layout />}>
