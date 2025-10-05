@@ -35,9 +35,9 @@ const Layout = () => {
         ></div>
       )}
 
-      {/* Right Content Area */}
+  
       <div className="flex-1 flex flex-col md:ml-64">
-        {/* Sticky Header */}
+    
         <div className="sticky top-0 z-10 bg-white border-b border-gray-200">
           <Header />
         </div>

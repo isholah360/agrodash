@@ -122,7 +122,7 @@ export default function About() {
                 01
               </span>
               <h2 className="text-2xl md:text-2xl font-semibold text-gray-800">
-                <span className="text-xl">Commissioner </span> <br />
+                <span className="text-xl">Hon. Commissioner</span> <br />
                 Barr. Olasunkanmi Olaleye
               </h2>
             </div>
@@ -154,7 +154,7 @@ export default function About() {
                 02
               </span>
               <h2 className="text-2xl md:text-2xl font-semibold text-gray-800">
-                <span className="text-xl">Permanent Secretary</span> <br />
+                <span className="text-xl">Hon. Permanent Secretary</span> <br />
                 Mrs. Abosede Esther Owoeye
               </h2>
             </div>
