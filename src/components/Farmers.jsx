@@ -246,7 +246,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default function GetFarmer() {
   const [farmers, setFarmers] = useState([]);
