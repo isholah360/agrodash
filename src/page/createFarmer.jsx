@@ -57,6 +57,9 @@ const CreateFarmer = () => {
 
     try {
       const token = localStorage.getItem("authToken");
+      const userId= localStorage.getItem("userId");
+      formData.userId = Number(userId);
+      console.log("Submitting form data:", formData);
 
       const response = await fetch(`/api/v1/Farmer/Create`, {
         method: "POST",
@@ -110,6 +113,8 @@ const CreateFarmer = () => {
   };
 
   return (
+    <>
+    <div className="pt-[5rem]"></div>
     <div className="max-w-2xl mx-auto mt-8 p-6">
       <div className="bg-white rounded-lg shadow-lg p-6">
         <h2 className="text-3xl font-bold mb-6 text-gray-800 border-b pb-4">
@@ -366,6 +371,7 @@ const CreateFarmer = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

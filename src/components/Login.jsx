@@ -12,6 +12,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [user, setUser] = useState();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -55,10 +56,11 @@ const Login = () => {
         localStorage.setItem("user", payload);
         localStorage.setItem("userId", payload.UserId);
         setUserRole(payload.role);
+        setUser(payload);
         if (payload.role === "1") {
           navigate("/dashboard");
         } else {
-          navigate("/");
+          navigate("/user");
         }
       }
 

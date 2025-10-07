@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { jwtDecode } from "jwt-decode";
 import Footer from "../../page/footer.";
 
 export default function GLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState();
+  useEffect(() => {
+    try {
+      const storedUser = jwtDecode(localStorage.getItem("authToken"));
+      if (storedUser) {
+        setUser(storedUser.UserId);
+      } else {
+        setUser(null);
+      }
+    } catch (err) {
+      console.error("Failed to load user:", err);
+      setUser(null);
+    }
+  }, []);
+  console.log(user);
   return (
     <div className="relative ">
       <div className="absolute z-20 w-full">
@@ -46,9 +62,28 @@ export default function GLayout() {
 
         <div className="w-1/2">
           <div className="hidden lg:block bg-black absolute top-10 text-amber-100 right-10 px-4 py-2 rounded-full text-sm">
-            <Link to="login" className="text-white hover:text-green-600">
-              <span>Login</span>
-            </Link>
+           {user ? (
+                <Link
+                  to="/"
+                  onClick={() => {
+                    localStorage.removeItem("authToken");
+                    localStorage.removeItem("user");
+                    setUser(null);
+                    setMenuOpen(false);
+                  }}
+                  className="mt-2 text-white rounded-2xl bg-black  hover:text-green-600 text-center px-3 py-1"
+                >
+                  <span>Logout</span>
+                </Link>
+              ) : (
+                <Link
+                  to="login"
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-2 text-white rounded-2xl bg-black  hover:text-green-600 text-center px-3 py-1"
+                >
+                  <span>Login</span>
+                </Link>
+              )}
           </div>
         </div>
 
@@ -88,13 +123,28 @@ export default function GLayout() {
               >
                 Sustainability
               </Link>
-              <Link
-                to="login"
-                onClick={() => setMenuOpen(false)}
-                className="mt-2 text-white rounded-2xl bg-black  hover:text-green-600 text-center px-3 py-1"
-              >
-                Login
-              </Link>
+              {user ? (
+                <Link
+                  to="login"
+                  onClick={() => {
+                    localStorage.removeItem("authToken");
+                    localStorage.removeItem("user");
+                    setUser(null);
+                    setMenuOpen(false);
+                  }}
+                  className="mt-2 text-white rounded-2xl bg-black  hover:text-green-600 text-center px-3 py-1"
+                >
+                  <span>Logout</span>
+                </Link>
+              ) : (
+                <Link
+                  to="login"
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-2 text-white rounded-2xl bg-black  hover:text-green-600 text-center px-3 py-1"
+                >
+                  <span>Login</span>
+                </Link>
+              )}
             </div>
           )}
         </button>

@@ -28,7 +28,9 @@ export default function App() {
           <Route path="/" element={<Hero />} />
           <Route path="/about" element={<About />} />
           <Route path="/whatwedo" element={<Service />} />
-          <Route path="/user" element={<PublicOfficer/>} />
+          <Route path="/user" element={<PublicOfficer />} />
+          <Route path="/createfarm" element={<CreateFarmForm />} />
+          <Route path="/createfarmer" element={<CreateFarmer />} />
           <Route path="/login" element={<Login />} />
         </Route>
         <Route element={<Layout />}>
