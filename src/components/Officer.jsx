@@ -28,9 +28,10 @@ const Officer = () => {
         }
 
         const result = await res.json();
-        console.log(result.data.data);
+     
 
         setOfficerData(result.data.data);
+       
         setError("");
       } catch (err) {
         console.error("Error fetching farms:", err);
@@ -43,7 +44,7 @@ const Officer = () => {
 
     fetchFarms();
   }, []);
-
+  localStorage.setItem("officer", officerData.length);
   useEffect(() => {
     const fetchFarmers = async () => {
       try {
@@ -90,8 +91,6 @@ const Officer = () => {
         }
 
         const result = await res.json();
-        console.log(result.data.data);
-
         setFarms(result.data.data);
         setError("");
       } catch (err) {
@@ -141,9 +140,7 @@ const Officer = () => {
                   lga={`LGA: ${officer.lgaid}`}
                   color="blue"
                 />
-                {console.log(
-                  officer.farmers.map((farmer) => farmer.farmCount).length
-                )}
+              
                 <DashboardCard
                   title="Number of Farmers"
                   value={

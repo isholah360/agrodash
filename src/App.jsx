@@ -46,7 +46,7 @@ export default function App() {
           <Route path="/farmers/:id" element={<FarmerDetails />} />
           <Route path="/livestock" element={<Livestock />} />
           <Route path="/reports" element={<Reports />} />
-          <Route path="/addtask" element={<Addtask />} />
+          <Route path="/notification" element={<Addtask />} />
           <Route path="/login" element={<Login />} />
         </Route>
       </Routes>
