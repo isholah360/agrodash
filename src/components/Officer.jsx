@@ -145,7 +145,7 @@ const Officer = () => {
                   lga={`LGA: ${officer.lgaid}`}
                   color="blue"
                 />
-
+                {/* {console.log(officer.farmers.map(farmer => farmer.farmCount))} */}
                 <DashboardCard
                   title="Number of Farmers"
                   value={farmers.filter(farmer => officer.userid === farmer.userId).length}

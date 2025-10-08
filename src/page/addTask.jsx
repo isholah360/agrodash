@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { FaPlus, FaSave } from 'react-icons/fa';
 
 function Addtask() {
+  const [farmers, setFarmers] = useState([]);
+  const [success, setSuccess] = useState('');
   const [formData, setFormData] = useState({
     title: '',
     subtitle: '',
@@ -91,7 +93,7 @@ function Addtask() {
       });
 
         setErrors({});
-      alert('Task added successfully!');
+     setSuccess('Task added successfully!');
 
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -125,7 +127,11 @@ function Addtask() {
             Create a new task by filling out the form below
           </p>
         </div>
-
+        {success && (
+          <div className="mb-6 p-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+            {success}
+          </div>
+        )}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
           <form onSubmit={handleSubmit} className="p-6 sm:p-8">
 

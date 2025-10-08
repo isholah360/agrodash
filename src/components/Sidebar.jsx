@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 
 const Sidebar = ({ closeSidebar }) => {
@@ -6,6 +6,11 @@ const Sidebar = ({ closeSidebar }) => {
 
   const userRole = localStorage.getItem("role");
   const userId = parseInt(localStorage.getItem("userId"));
+  const navigation = useNavigate();
+
+  const handleNagivate = () => {
+    navigation("/");
+  }
 
   const menuItems = [
     { label: "Dashboard", icon: "🏠", page: "/dashboard" },
@@ -25,7 +30,7 @@ const Sidebar = ({ closeSidebar }) => {
   return (
     <aside className="w-64 bg-white shadow-md min-h-screen p-4 border-r border-gray-200">
       <div className="flex items-center mb-8">
-        <div className="text-2xl font-bold text-green-600 my-5 pt-3 ml-2.5">
+        <div className="text-2xl font-bold text-green-600 my-5 pt-3 ml-2.5" onClick={handleNagivate} style={{ cursor: 'pointer' }}>
           OyoAims
         </div>
       </div>
