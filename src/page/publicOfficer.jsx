@@ -62,7 +62,6 @@ export default function PublicOfficer() {
     );
   }
 
-  // ✅ Filter by logged-in user
   const filteredFarmers = farmers.filter((farmer) => farmer.userId === theId);
 
   return (

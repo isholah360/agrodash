@@ -7,6 +7,7 @@ function Addtask() {
     subtitle: '',
     message: ''
   });
+  const [theiD, setTheiD] = useState();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -57,12 +58,32 @@ function Addtask() {
     setLoading(true);
 
     try {
-      // Simulate API call
+    
       await new Promise(resolve => setTimeout(resolve, 1000));
+
+        const token = localStorage.getItem("authToken")
+         const Id = localStorage.getItem("userId")
+         setTheiD(parseInt(Id))
+
+        const response = await fetch(`/api/v1/Notification/Create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({formData, createdby: Id}),
+      });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch farmers: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data.data.data);
+        setFarmers(data.data.data);
 
       console.log('Form submitted:', formData);
 
-      // Reset form
       setFormData({
         title: '',
         subtitle: '',
@@ -94,8 +115,8 @@ function Addtask() {
       <div className="max-w-2xl mx-auto">
 
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-4">
-            <FaPlus className="w-6 h-6 text-purple-600" />
+          <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
+            <FaPlus className="w-6 h-6 text-green-600" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             Add New Task
@@ -121,10 +142,10 @@ function Addtask() {
                 name="title"
                 value={formData.title}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all ${
                   errors.title
                     ? 'border-red-300 bg-red-50'
-                    : 'border-gray-300 hover:border-gray-400 focus:border-purple-500'
+                    : 'border-gray-300 hover:border-gray-400 focus:border-green-500'
                 }`}
                 placeholder="Enter task title"
                 disabled={loading}
@@ -150,10 +171,10 @@ function Addtask() {
                 name="subtitle"
                 value={formData.subtitle}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all ${
                   errors.subtitle
                     ? 'border-red-300 bg-red-50'
-                    : 'border-gray-300 hover:border-gray-400 focus:border-purple-500'
+                    : 'border-gray-300 hover:border-gray-400 focus:border-green-500'
                 }`}
                 placeholder="Enter task subtitle"
                 disabled={loading}
@@ -180,10 +201,10 @@ function Addtask() {
                 rows={6}
                 value={formData.message}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none ${
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none ${
                   errors.message
                     ? 'border-red-300 bg-red-50'
-                    : 'border-gray-300 hover:border-gray-400 focus:border-purple-500'
+                    : 'border-gray-300 hover:border-gray-400 focus:border-green-500'
                 }`}
                 placeholder="Enter detailed task description..."
                 disabled={loading}
@@ -209,7 +230,7 @@ function Addtask() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-300 text-white py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center"
+                className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-green-300 text-white py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center"
               >
                 {loading ? (
                   <>

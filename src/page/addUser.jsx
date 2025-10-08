@@ -2,18 +2,27 @@ import React, { useState } from "react";
 
 const AddUser = () => {
   const [formData, setFormData] = useState({
+    phonenumber: "",
     firstname: "",
     lastname: "",
-    email: "",
-    password: "",
-    role: "", // e.g., "Admin" or "Officer"
+    middlename: "",
+    gender: "",
+    emailAddress: "",
+    userName: "",
+    salt: "",
+    lgaid: "",
+    regionid: "",
+    streetaddress: "",
+    town: "",
+    postalcode: "",
+    latitude: "",
+    longitude: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -23,56 +32,90 @@ const AddUser = () => {
     if (errorMsg) setErrorMsg("");
   };
 
-  // Basic validation
   const validateForm = () => {
-    if (!formData.firstname.trim()) return setErrorMsg("First name is required");
+    if (!formData.firstname.trim())
+      return setErrorMsg("First name is required");
     if (!formData.lastname.trim()) return setErrorMsg("Last name is required");
-    if (!formData.email.trim()) return setErrorMsg("Email is required");
-    if (!/\S+@\S+\.\S+/.test(formData.email))
+    if (!formData.emailAddress.trim())
+      return setErrorMsg("Email address is required");
+    if (!/\S+@\S+\.\S+/.test(formData.emailAddress))
       return setErrorMsg("Invalid email format");
-    if (!formData.password || formData.password.length < 6)
-      return setErrorMsg("Password must be at least 6 characters");
-    if (!formData.role.trim()) return setErrorMsg("Role is required");
-
+    if (!formData.userName.trim()) return setErrorMsg("Username is required");
+    if (!formData.gender.trim()) return setErrorMsg("Gender is required");
+    if (!formData.phonenumber.trim())
+      return setErrorMsg("Phone number is required");
+    if (!formData.lgaid || parseInt(formData.lgaid) <= 0)
+      return setErrorMsg("Invalid LGA ID");
+    if (!formData.regionid || parseInt(formData.regionid) <= 0)
+      return setErrorMsg("Invalid Region ID");
     return true;
   };
 
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSuccessMsg("");
     setErrorMsg("");
-
     if (!validateForm()) return;
 
     setLoading(true);
+
     try {
       const token = localStorage.getItem("authToken");
       if (!token) throw new Error("No auth token found. Please log in again.");
 
-      const response = await fetch("/api/v1/User/Register", {
+      const payload = {
+        phonenumber: formData.phonenumber.trim(),
+        firstname: formData.firstname.trim(),
+        lastname: formData.lastname.trim(),
+        middlename: formData.middlename.trim(),
+        gender: formData.gender.trim(),
+        emailAddress: formData.emailAddress.trim(),
+        userName: formData.userName.trim(),
+        salt: formData.salt.trim() || "",
+        lgaid: parseInt(formData.lgaid),
+        regionid: parseInt(formData.regionid),
+        streetaddress: formData.streetaddress.trim() || "",
+        town: formData.town.trim() || "",
+        postalcode: formData.postalcode.trim() || "",
+        latitude: formData.latitude ? parseFloat(formData.latitude) : 0,
+        longitude: formData.longitude ? parseFloat(formData.longitude) : 0,
+      };
+
+      console.log("Submitting User:", payload);
+
+      const response = await fetch("/api/v1/User/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
-      const result = await response.json();
+      const result = await response.text();
       console.log("User Creation Result:", result);
 
       if (!response.ok) {
-        throw new Error(result.message || "Failed to create user");
+        throw new Error(result.message || `Server Error: ${response.status}`);
       }
 
       setSuccessMsg("🎉 User created successfully!");
       setFormData({
+        phonenumber: "",
         firstname: "",
         lastname: "",
-        email: "",
-        password: "",
-        role: "",
+        middlename: "",
+        gender: "",
+        emailAddress: "",
+        userName: "",
+        salt: "",
+        lgaid: "",
+        regionid: "",
+        streetaddress: "",
+        town: "",
+        postalcode: "",
+        latitude: "",
+        longitude: "",
       });
 
       setTimeout(() => setSuccessMsg(""), 5000);
@@ -85,7 +128,7 @@ const AddUser = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 p-6">
+    <div className="max-w-3xl mx-auto mt-8 p-6">
       <div className="bg-white rounded-lg shadow-lg p-6">
         <h2 className="text-3xl font-bold mb-6 text-gray-800 border-b pb-4">
           Create New User
@@ -102,95 +145,160 @@ const AddUser = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              First Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="firstname"
-              value={formData.firstname}
-              onChange={handleChange}
-              placeholder="Enter first name"
-              className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
-              required
-            />
-          </div>
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
+          <input
+            type="text"
+            name="firstname"
+            value={formData.firstname}
+            onChange={handleChange}
+            placeholder="First Name"
+            className="border p-3 rounded-lg"
+            required
+          />
+          <input
+            type="text"
+            name="lastname"
+            value={formData.lastname}
+            onChange={handleChange}
+            placeholder="Last Name"
+            className="border p-3 rounded-lg"
+            required
+          />
+          <input
+            type="text"
+            name="middlename"
+            value={formData.middlename}
+            onChange={handleChange}
+            placeholder="Middle Name"
+            className="border p-3 rounded-lg"
+          />
+          <input
+            type="text"
+            name="userName"
+            value={formData.userName}
+            onChange={handleChange}
+            placeholder="Username"
+            className="border p-3 rounded-lg"
+            required
+          />
+          <input
+            type="text"
+            name="phonenumber"
+            value={formData.phonenumber}
+            onChange={handleChange}
+            placeholder="Phone Number"
+            className="border p-3 rounded-lg"
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Last Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="lastname"
-              value={formData.lastname}
-              onChange={handleChange}
-              placeholder="Enter last name"
-              className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter email address"
-              className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter password"
-              className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Role <span className="text-red-500">*</span>
-            </label>
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
-              required
-            >
-              <option value="">Select role</option>
-              <option value="Admin">Admin</option>
-              <option value="Officer">Officer</option>
-            </select>
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${
-              loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-green-600 hover:bg-green-700 active:scale-98"
-            }`}
+          <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            className="border p-3 rounded-lg"
+            required
           >
-            {loading ? "Creating User..." : "Create User"}
-          </button>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+
+          <input
+            type="email"
+            name="emailAddress"
+            value={formData.emailAddress}
+            onChange={handleChange}
+            placeholder="Email Address"
+            className="border p-3 rounded-lg"
+            required
+          />
+
+          <input
+            type="text"
+            name="streetaddress"
+            value={formData.streetaddress}
+            onChange={handleChange}
+            placeholder="Street Address"
+            className="border p-3 rounded-lg"
+          />
+          <input
+            type="text"
+            name="town"
+            value={formData.town}
+            onChange={handleChange}
+            placeholder="Town"
+            className="border p-3 rounded-lg"
+          />
+          <input
+            type="text"
+            name="postalcode"
+            value={formData.postalcode}
+            onChange={handleChange}
+            placeholder="Postal Code"
+            className="border p-3 rounded-lg"
+          />
+          <input
+            type="number"
+            name="lgaid"
+            value={formData.lgaid}
+            onChange={handleChange}
+            placeholder="LGA ID"
+            className="border p-3 rounded-lg"
+            required
+          />
+          <input
+            type="number"
+            name="regionid"
+            value={formData.regionid}
+            onChange={handleChange}
+            placeholder="Region ID"
+            className="border p-3 rounded-lg"
+            required
+          />
+          <input
+            type="number"
+            step="any"
+            name="latitude"
+            value={formData.latitude}
+            onChange={handleChange}
+            placeholder="Latitude"
+            className="border p-3 rounded-lg"
+          />
+          <input
+            type="number"
+            step="any"
+            name="longitude"
+            value={formData.longitude}
+            onChange={handleChange}
+            placeholder="Longitude"
+            className="border p-3 rounded-lg"
+          />
+
+          <input
+            type="text"
+            name="salt"
+            value={formData.salt}
+            onChange={handleChange}
+            placeholder="Salt"
+            className="border p-3 rounded-lg"
+          />
+
+          <div className="md:col-span-2">
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full py-3 px-4 rounded-lg font-semibold text-white transition-all ${
+                loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-green-600 hover:bg-green-700 active:scale-98"
+              }`}
+            >
+              {loading ? "Creating User..." : "Create User"}
+            </button>
+          </div>
         </form>
       </div>
     </div>
@@ -198,4 +306,3 @@ const AddUser = () => {
 };
 
 export default AddUser;
-
