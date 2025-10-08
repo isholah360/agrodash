@@ -121,7 +121,7 @@ function Addtask() {
             <FaPlus className="w-6 h-6 text-green-600" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-            Add New Task
+            Add New Notification
           </h1>
           <p className="text-gray-600">
             Create a new task by filling out the form below
@@ -241,12 +241,12 @@ function Addtask() {
                 {loading ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Adding Task...
+                    Adding Notification...
                   </>
                 ) : (
                   <>
                     <FaSave className="w-4 h-4 mr-2" />
-                    Add Task
+                    Add Notification
                   </>
                 )}
               </button>

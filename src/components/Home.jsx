@@ -17,6 +17,7 @@ import ChartCard from "./ChartCard";
 function Home() {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [farmers, setFarmers] = useState([]);
+  const [notif, setNotif] = useState([]);
     const [theiD, setTheiD] = useState();
     const [farms, setFarms] = useState([]);
       const [loading, setLoading] = useState(true);
@@ -91,6 +92,43 @@ function Home() {
       };
   
       fetchFarmers();
+    }, []);
+
+    useEffect(() => {
+      const fetchNotification = async () => {
+        try {
+           const token = localStorage.getItem("authToken")
+           const Id = localStorage.getItem("userId")
+           setTheiD(Id)
+  
+          const response = await fetch(
+            `api/v1/Notification/GetNotifications`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                 Authorization: `Bearer ${token}`, 
+              },
+            }
+          );
+  
+          if (!response.ok) {
+            throw new Error(`Failed to fetch farmers: ${response.status}`);
+          }
+  
+          const data = await response.json();
+          console.log(data);
+          setNotif(data.data.data);
+       
+        
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchNotification();
     }, []);
   
   
@@ -168,9 +206,9 @@ function Home() {
 
                 <div className="bg-white rounded-xl shadow-sm p-5 border border-gray-200">
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                    Today Tasks
+                    Today Notification
                   </h3>
-                  <TaskCard
+                  {/* <TaskCard
                     title="Farmers Meeting"
                     progress={58}
                     color="pink"
@@ -190,7 +228,7 @@ function Home() {
                     color="yellow"
                     users={3}
                      bg="bg-gray-800"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

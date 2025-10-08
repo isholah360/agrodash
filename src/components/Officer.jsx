@@ -1,16 +1,14 @@
-
 import React, { useEffect, useState } from "react";
 import DashboardCard from "./DashboardCard";
 import Officercard from "./Officercard";
-import { Link } from "react-router-dom"; 
-
+import { Link } from "react-router-dom";
 
 const Officer = () => {
   const [officerData, setOfficerData] = useState([]);
   const [farmers, setFarmers] = useState([]);
   const [farms, setFarms] = useState([]);
   const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(""); 
+  const [error, setError] = React.useState("");
   useEffect(() => {
     const fetchFarms = async () => {
       try {
@@ -47,32 +45,32 @@ const Officer = () => {
   }, []);
 
   useEffect(() => {
-  const fetchFarmers = async () => {
-    try {
-      const token = localStorage.getItem("authToken");
-      const response = await fetch(`/api/v1/Farmer/GetFarmers`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    const fetchFarmers = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+        const response = await fetch(`/api/v1/Farmer/GetFarmers`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch farmers: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch farmers: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setFarmers(data.data.data || []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const data = await response.json();
-      setFarmers(data.data.data || []);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchFarmers();
-}, []);
+    fetchFarmers();
+  }, []);
 
   useEffect(() => {
     const fetchFarms = async () => {
@@ -108,13 +106,11 @@ const Officer = () => {
     fetchFarms();
   }, []);
 
-
   return (
     <div className="p-5">
       <h2 className="text-2xl font-semibold text-gray-800 mb-6">Officers</h2>
 
       {officerData.map((officer, index) => {
-     
         // const farmerCount = officer.farmers.length;
 
         // const totalFarms = officer.farmers.reduce(
@@ -145,22 +141,30 @@ const Officer = () => {
                   lga={`LGA: ${officer.lgaid}`}
                   color="blue"
                 />
-                {/* {console.log(officer.farmers.map(farmer => farmer.farmCount))} */}
+                {console.log(
+                  officer.farmers.map((farmer) => farmer.farmCount).length
+                )}
                 <DashboardCard
                   title="Number of Farmers"
-                  value={farmers.filter(farmer => officer.userid === farmer.userId).length}
+                  value={
+                    farmers.filter((farmer) => officer.userid === farmer.userId)
+                      .length
+                  }
                   color="indigo"
                 />
 
                 <DashboardCard
                   title="Number of Farms"
-                  value={farms.filter(farmer => officer.userid === farmer.userId).length}
+                  value={officer.farmers.reduce(
+                    (acc, farmer) => acc + (farmer.farms?.length || 0),
+                    0
+                  )}
                   color="green"
                 />
 
                 <DashboardCard
                   title="Number of Livestock"
-                  value='12'
+                  value="12"
                   color="purple"
                 />
               </div>

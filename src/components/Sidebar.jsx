@@ -18,7 +18,7 @@ const Sidebar = ({ closeSidebar }) => {
     { label: "Farmers", icon: "👨‍🌾", page: "/farmers" },
     { label: "Farms", icon: "🚜", page: "/farms" },
     { label: "LivesStocks", icon: "🐄", page: "/livestock" },
-    { label: "AddTask", icon: "📝", page: "/addtask" },
+    { label: "Notifictaion", icon: "📝", page: "/notification" },
   ];
   if (userRole === "admin" || userId === 4) {
     menuItems.push(
