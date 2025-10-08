@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const AddUser = () => {
   const [regions, setRegions] = useState([]);
   const [lga, setLga] = useState([]);
-    const [error, setError] = useState("");
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     phonenumber: "",
     firstname: "",
@@ -24,60 +24,63 @@ const AddUser = () => {
   console.log(formData.regionid);
 
   useEffect(() => {
-      const fetchRegions = async () => {
-        try {
-          const token = localStorage.getItem("authToken");
-          const response = await fetch(`/api/v1/Region/GetRegions`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          });
-  
-          if (!response.ok) {
-            throw new Error(`Failed to fetch farmers: ${response.status}`);
-          }
-  
-          const data = await response.json();
-          setRegions(data.data.data);
-        } catch (err) {
-          setError(err.message);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchRegions();
-    }, []);
+    const fetchRegions = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+        const response = await fetch(`/api/v1/Region/GetRegions`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-    useEffect(() => {
-      const fetchLga = async () => {
-        try {
-          const token = localStorage.getItem("authToken");
-          const response = await fetch(`api/v1/Lga/getLgasByRegionId/${formData.regionid}`, {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch farmers: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setRegions(data.data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRegions();
+  }, []);
+
+  useEffect(() => {
+    const fetchLga = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+        const response = await fetch(
+          `api/v1/Lga/getLgasByRegionId/${formData.regionid}`,
+          {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
-          });
-  
-          if (!response.ok) {
-            throw new Error(`Failed to fetch farmers: ${response.status}`);
           }
-  
-          const data = await response.json();
-          setLga(data.data.data);
-        } catch (err) {
-          setError(err.message);
-        } finally {
-          setLoading(false);
+        );
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch farmers: ${response.status}`);
         }
-      };
-  
-      fetchLga();
-    }, [formData.regionid]);
+
+        const data = await response.json();
+        setLga(data.data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLga();
+  }, [formData.regionid]);
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -151,16 +154,16 @@ const AddUser = () => {
         },
         body: JSON.stringify(payload),
       });
-      const raw = await response.text(); 
-      
+      const raw = await response.text();
+
       let result;
 
-      console.log(formData)
+      console.log(formData);
 
       try {
-        result = JSON.parse(raw); 
+        result = JSON.parse(raw);
       } catch {
-        result = raw; 
+        result = raw;
       }
       console.log("User Creation Result:", result);
 
@@ -245,7 +248,7 @@ const AddUser = () => {
             className="border p-3 rounded-lg"
             required
           />
-            <input
+          <input
             type="email"
             name="emailAddress"
             value={formData.emailAddress}
@@ -293,8 +296,6 @@ const AddUser = () => {
             <option value="Female">Female</option>
           </select>
 
-        
-
           <input
             type="text"
             name="streetaddress"
@@ -319,36 +320,36 @@ const AddUser = () => {
             placeholder="Postal Code"
             className="border p-3 rounded-lg"
           />
-            <select
-            name="lgaid"
-            value={formData.lgaid}
-            onChange={handleChange}
-            className="border p-3 rounded-lg"
-            required
-          >
-           <option value="">Select LGA</option>
-           {lga.map((lgArea) => (
-              <option key={lgArea.lgaid} value={lgArea.lgaid}>
-                {lgArea.lganame}
-              </option>
-            ))}
-          </select>
 
-           <select
+          <select
             name="regionid"
             value={formData.regionid}
             onChange={handleChange}
             className="border p-3 rounded-lg"
             required
           >
-           <option value="">Select Region</option>
-           {regions.map((region) => (
+            <option value="">Select Region</option>
+            {regions.map((region) => (
               <option key={region.regionid} value={region.regionid}>
                 {region.regionname}
               </option>
             ))}
           </select>
-        
+          <select
+            name="lgaid"
+            value={formData.lgaid}
+            onChange={handleChange}
+            className="border p-3 rounded-lg"
+            required
+          >
+            <option value="">Select LGA</option>
+            {lga.map((lgArea) => (
+              <option key={lgArea.lgaid} value={lgArea.lgaid}>
+                {lgArea.lganame}
+              </option>
+            ))}
+          </select>
+
           <input
             type="number"
             step="any"
