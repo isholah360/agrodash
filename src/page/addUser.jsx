@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const AddUser = () => {
+  const [regions, setRegions] = useState([]);
+  const [lga, setLga] = useState([]);
+    const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     phonenumber: "",
     firstname: "",
@@ -9,7 +12,6 @@ const AddUser = () => {
     gender: "",
     emailAddress: "",
     userName: "",
-    salt: "",
     lgaid: "",
     regionid: "",
     streetaddress: "",
@@ -19,7 +21,66 @@ const AddUser = () => {
     longitude: "",
   });
 
+  console.log(formData.regionid);
+
+  useEffect(() => {
+      const fetchRegions = async () => {
+        try {
+          const token = localStorage.getItem("authToken");
+          const response = await fetch(`/api/v1/Region/GetRegions`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+  
+          if (!response.ok) {
+            throw new Error(`Failed to fetch farmers: ${response.status}`);
+          }
+  
+          const data = await response.json();
+          setRegions(data.data.data);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchRegions();
+    }, []);
+
+    useEffect(() => {
+      const fetchLga = async () => {
+        try {
+          const token = localStorage.getItem("authToken");
+          const response = await fetch(`api/v1/Lga/getLgasByRegionId/${formData.regionid}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+  
+          if (!response.ok) {
+            throw new Error(`Failed to fetch farmers: ${response.status}`);
+          }
+  
+          const data = await response.json();
+          setLga(data.data.data);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchLga();
+    }, [formData.regionid]);
+
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -71,7 +132,6 @@ const AddUser = () => {
         gender: formData.gender.trim(),
         emailAddress: formData.emailAddress.trim(),
         userName: formData.userName.trim(),
-        salt: formData.salt.trim() || "",
         lgaid: parseInt(formData.lgaid),
         regionid: parseInt(formData.regionid),
         streetaddress: formData.streetaddress.trim() || "",
@@ -81,7 +141,7 @@ const AddUser = () => {
         longitude: formData.longitude ? parseFloat(formData.longitude) : 0,
       };
 
-      console.log("Submitting User:", payload);
+      console.log(payload);
 
       const response = await fetch("/api/v1/User/register", {
         method: "POST",
@@ -91,9 +151,23 @@ const AddUser = () => {
         },
         body: JSON.stringify(payload),
       });
+      const raw = await response.text(); 
+      
+      let result;
 
-      const result = await response.text();
+      console.log(formData)
+
+      try {
+        result = JSON.parse(raw); 
+      } catch {
+        result = raw; 
+      }
       console.log("User Creation Result:", result);
+
+      if (result.success === false) {
+        setMessage(result.data.message);
+        console.log(result.data.message);
+      }
 
       if (!response.ok) {
         throw new Error(result.message || `Server Error: ${response.status}`);
@@ -136,7 +210,11 @@ const AddUser = () => {
 
         {successMsg && (
           <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-            <p className="text-green-700 font-medium">{successMsg}</p>
+            {message ? (
+              <p className="text-green-700 font-medium">{message}</p>
+            ) : (
+              <p className="text-green-700 font-medium">{successMsg}</p>
+            )}
           </div>
         )}
         {errorMsg && (
@@ -164,6 +242,15 @@ const AddUser = () => {
             value={formData.lastname}
             onChange={handleChange}
             placeholder="Last Name"
+            className="border p-3 rounded-lg"
+            required
+          />
+            <input
+            type="email"
+            name="emailAddress"
+            value={formData.emailAddress}
+            onChange={handleChange}
+            placeholder="Email Address"
             className="border p-3 rounded-lg"
             required
           />
@@ -206,15 +293,7 @@ const AddUser = () => {
             <option value="Female">Female</option>
           </select>
 
-          <input
-            type="email"
-            name="emailAddress"
-            value={formData.emailAddress}
-            onChange={handleChange}
-            placeholder="Email Address"
-            className="border p-3 rounded-lg"
-            required
-          />
+        
 
           <input
             type="text"
@@ -240,24 +319,36 @@ const AddUser = () => {
             placeholder="Postal Code"
             className="border p-3 rounded-lg"
           />
-          <input
-            type="number"
+            <select
             name="lgaid"
             value={formData.lgaid}
             onChange={handleChange}
-            placeholder="LGA ID"
             className="border p-3 rounded-lg"
             required
-          />
-          <input
-            type="number"
+          >
+           <option value="">Select LGA</option>
+           {lga.map((lgArea) => (
+              <option key={lgArea.lgaid} value={lgArea.lgaid}>
+                {lgArea.lganame}
+              </option>
+            ))}
+          </select>
+
+           <select
             name="regionid"
             value={formData.regionid}
             onChange={handleChange}
-            placeholder="Region ID"
             className="border p-3 rounded-lg"
             required
-          />
+          >
+           <option value="">Select Region</option>
+           {regions.map((region) => (
+              <option key={region.regionid} value={region.regionid}>
+                {region.regionname}
+              </option>
+            ))}
+          </select>
+        
           <input
             type="number"
             step="any"
@@ -274,15 +365,6 @@ const AddUser = () => {
             value={formData.longitude}
             onChange={handleChange}
             placeholder="Longitude"
-            className="border p-3 rounded-lg"
-          />
-
-          <input
-            type="text"
-            name="salt"
-            value={formData.salt}
-            onChange={handleChange}
-            placeholder="Salt"
             className="border p-3 rounded-lg"
           />
 

@@ -105,7 +105,7 @@ export default function GLayout() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="lg:hidden absolute right-[-2.5rem] p-[5rem] pr-[1rem] bg-white shadow-md rounded-lg mx-4 mt-5 flex flex-col space-y-3 text-sm">
+          <div className="lg:hidden absolute right-[-1.2rem] p-[5rem] pr-[1rem] bg-white shadow-md rounded-lg mx-4 mt-5 flex flex-col space-y-3 text-sm">
             <Link
               to="/"
               onClick={() => setMenuOpen(false)}
