@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import DashboardCard from "./DashboardCard";
 import Officercard from "./Officercard";
 import { Link } from "react-router-dom";
-
+// api/v1/Lga/getLga/1
 const Officer = () => {
   const [officerData, setOfficerData] = useState([]);
+  const [lgaData, setLgaData] = useState([]);
   const [farmers, setFarmers] = useState([]);
   const [farms, setFarms] = useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -31,6 +32,7 @@ const Officer = () => {
      
 
         setOfficerData(result.data.data);
+        console.log(result.data.data);
        
         setError("");
       } catch (err) {
@@ -44,7 +46,42 @@ const Officer = () => {
 
     fetchFarms();
   }, []);
-  localStorage.setItem("officer", officerData.length);
+  useEffect(() => {
+    const fetchLgaById = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+
+        const res = await fetch("/api/v1/Lga/GetLgas", {
+          method: "GET",
+          headers: {  
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch farms");
+        }
+
+        const result = await res.json();
+     
+
+        setLgaData(result.data.data);
+        console.log(result.data.data);
+        setError("");
+      } catch (err) {
+        console.error("Error fetching farms:", err);
+        setError(err.message || "An error occurred");
+        setLgaData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLgaById();
+  }, []);
+  
   useEffect(() => {
     const fetchFarmers = async () => {
       try {
@@ -137,7 +174,7 @@ const Officer = () => {
                   title={officer.firstname + " " + officer.lastname}
                   value={officer.email}
                   phone={officer.phone}
-                  lga={`LGA: ${officer.lgaid}`}
+                  lga={`LGA: ${officer.lga}`}
                   color="blue"
                 />
               
