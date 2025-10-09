@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { FaPlus, FaSave } from 'react-icons/fa';
+import React, { useState } from "react";
+import { FaPlus, FaSave } from "react-icons/fa";
 
 function Addtask() {
   const [farmers, setFarmers] = useState([]);
-  const [success, setSuccess] = useState('');
+  const [success, setSuccess] = useState("");
   const [formData, setFormData] = useState({
-    title: '',
-    subtitle: '',
-    message: ''
+    title: "",
+    subtitle: "",
+    message: "",
   });
   const [theiD, setTheiD] = useState();
   const [loading, setLoading] = useState(false);
@@ -15,16 +15,15 @@ function Addtask() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
 
- 
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ''
+        [name]: "",
       }));
     }
   };
@@ -33,17 +32,17 @@ function Addtask() {
     const newErrors = {};
 
     if (!formData.title.trim()) {
-      newErrors.title = 'Title is required';
+      newErrors.title = "Title is required";
     }
 
     if (!formData.subtitle.trim()) {
-      newErrors.subtitle = 'Subtitle is required';
+      newErrors.subtitle = "Subtitle is required";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     } else if (formData.message.length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long';
+      newErrors.message = "Message must be at least 10 characters long";
     }
 
     setErrors(newErrors);
@@ -60,14 +59,13 @@ function Addtask() {
     setLoading(true);
 
     try {
-    
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-        const token = localStorage.getItem("authToken")
-         const Id = localStorage.getItem("userId")
-         setTheiD(parseInt(Id))
+      const token = localStorage.getItem("authToken");
+      const Id = localStorage.getItem("userId");
+      setTheiD(parseInt(Id));
 
-        const response = await fetch(`/api/v1/Notification/Create`, {
+      const response = await fetch(`/api/v1/Notification/Create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,28 +74,26 @@ function Addtask() {
         body: JSON.stringify(formData),
       });
 
-        if (!response.ok) {
-          throw new Error(`Failed to fetch farmers: ${response.status}`);
-        }
+      if (!response.ok) {
+        throw new Error(`Failed to fetch farmers: ${response.status}`);
+      }
 
-        const Msgdata = await response.json();
-        console.log(Msgdata.data.data);
-        setFarmers(Msgdata.data.data);
+      const Msgdata = await response.json();
+      console.log(Msgdata.data.data);
+      setFarmers(Msgdata.data.data);
 
-      console.log('Form submitted:', formData);
+      console.log("Form submitted:", formData);
 
       setFormData({
-        title: '',
-        subtitle: '',
-        message: ''
+        title: "",
+        subtitle: "",
+        message: "",
       });
 
-        setErrors({});
-     setSuccess('Task added successfully!');
-
+      setErrors({});
+      setSuccess("Task added successfully!");
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Error adding task. Please try again.');
+      console.error("Error submitting form:", error);
     } finally {
       setLoading(false);
     }
@@ -105,9 +101,9 @@ function Addtask() {
 
   const handleReset = () => {
     setFormData({
-      title: '',
-      subtitle: '',
-      message: ''
+      title: "",
+      subtitle: "",
+      message: "",
     });
     setErrors({});
   };
@@ -115,7 +111,6 @@ function Addtask() {
   return (
     <div className="min-h-screen bg-gray-50 py-4 px-4 sm:py-8">
       <div className="max-w-2xl mx-auto">
-
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-4">
             <FaPlus className="w-6 h-6 text-green-600" />
@@ -128,13 +123,15 @@ function Addtask() {
           </p>
         </div>
         {success && (
-          <div className="mb-6 p-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+          <div
+            className="mb-6 p-4 text-sm text-green-700 bg-green-100 rounded-lg"
+            role="alert"
+          >
             {success}
           </div>
         )}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
           <form onSubmit={handleSubmit} className="p-6 sm:p-8">
-
             <div className="mb-6">
               <label
                 htmlFor="title"
@@ -150,8 +147,8 @@ function Addtask() {
                 onChange={handleInputChange}
                 className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all ${
                   errors.title
-                    ? 'border-red-300 bg-red-50'
-                    : 'border-gray-300 hover:border-gray-400 focus:border-green-500'
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300 hover:border-gray-400 focus:border-green-500"
                 }`}
                 placeholder="Enter task title"
                 disabled={loading}
@@ -179,8 +176,8 @@ function Addtask() {
                 onChange={handleInputChange}
                 className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all ${
                   errors.subtitle
-                    ? 'border-red-300 bg-red-50'
-                    : 'border-gray-300 hover:border-gray-400 focus:border-green-500'
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300 hover:border-gray-400 focus:border-green-500"
                 }`}
                 placeholder="Enter task subtitle"
                 disabled={loading}
@@ -209,8 +206,8 @@ function Addtask() {
                 onChange={handleInputChange}
                 className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none ${
                   errors.message
-                    ? 'border-red-300 bg-red-50'
-                    : 'border-gray-300 hover:border-gray-400 focus:border-green-500'
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300 hover:border-gray-400 focus:border-green-500"
                 }`}
                 placeholder="Enter detailed task description..."
                 disabled={loading}
@@ -257,7 +254,6 @@ function Addtask() {
                 disabled={loading}
                 className="flex-1 sm:flex-none bg-gray-100 hover:bg-gray-200 disabled:bg-gray-50 text-gray-700 py-3 px-6 rounded-lg font-medium transition-colors flex items-center justify-center"
               >
-              
                 Reset
               </button>
             </div>
@@ -267,10 +263,16 @@ function Addtask() {
         <div className="mt-6 text-center text-sm text-gray-500">
           <p>All fields marked with * are required</p>
         </div>
+        <div>
+          {errors && (
+            <div className="text-red-600 mt-4 text-center">
+              Error adding task. Please try again.
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
 export default Addtask;
-
