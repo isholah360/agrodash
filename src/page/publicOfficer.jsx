@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { jwtDecode } from "jwt-decode";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -11,7 +11,8 @@ export default function PublicOfficer() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [user, setUser] = useState();
-
+  const [notification, setNotification] = useState([]);
+// /api/v1/Notification/GetNotifications
   useEffect(() => {
     const fetchFarmers = async () => {
       try {
@@ -46,6 +47,42 @@ export default function PublicOfficer() {
     fetchFarmers();
   }, []);
 
+
+  useEffect(() => {
+    const fetchNotification = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+        const decode = jwtDecode(token);
+        const Id = localStorage.getItem("userId");
+        setTheId(parseInt(Id));
+        setUser(decode);
+        const response = await fetch(`/api/v1/Notification/GetNotifications`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch farmers: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("All farmers:", data.data.data);
+
+        setNotification(data.data.data || []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNotification();
+  }, []);
+  console.log(notification.length);
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64 text-green-700 text-lg font-semibold">
@@ -78,6 +115,17 @@ export default function PublicOfficer() {
             <span className="text-green-700">Phone</span>:{" "}
             {user.phoneNumber ? user.phoneNumber : "0806......."}
           </h1>
+          <div className="my-2 relative">
+             <h1 className="text-sm md:text-xl flex items-center gap-2">
+            <span className="text-green-700">Notification</span>:
+            <div className="relative">
+              <FaBell className="text-gray-600 text-xl" />
+              <span className="bg-green-500 absolute h-4 text-center w-4 top-[-.5rem] text-white text-sm left-[52%] rounded-full ">{notification.length}</span>
+            </div>
+            
+          </h1>
+          </div>
+         
         </div>
         <div>
           {user.profilePicUrl ? (
@@ -125,7 +173,7 @@ export default function PublicOfficer() {
                 <div className="p-4 text-center">
                   <h2 className="text-lg font-semibold text-gray-800 mb-1">
                     {farmer.firstname} {farmer.lastname}
-                    {farmer.farmerid}
+                  
                   </h2>
                   <p className="text-sm text-gray-600 mb-1">{farmer.email}</p>
                   <p className="text-sm text-gray-600 mb-2">

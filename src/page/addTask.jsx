@@ -73,16 +73,16 @@ function Addtask() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({formData, createdby: Id}),
+        body: JSON.stringify(formData),
       });
 
         if (!response.ok) {
           throw new Error(`Failed to fetch farmers: ${response.status}`);
         }
 
-        const data = await response.json();
-        console.log(data.data.data);
-        setFarmers(data.data.data);
+        const Msgdata = await response.json();
+        console.log(Msgdata.data.data);
+        setFarmers(Msgdata.data.data);
 
       console.log('Form submitted:', formData);
 

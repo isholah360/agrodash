@@ -6,7 +6,7 @@ const CreateFarmForm = () => {
   const [farmerId, setFarmerId] = useState("");
   const [formData, setFormData] = useState({
     farmName: "",
-    farmType: "",
+    farmtypeid: "",
     farmsize: "",
     location: "",
     town: "",
@@ -50,7 +50,7 @@ const CreateFarmForm = () => {
       return false;
     }
 
-    if (!formData.farmType.trim()) {
+    if (!formData.farmtypeid.trim()) {
       setErrorMsg("Farm type is required");
       return false;
     }
@@ -87,7 +87,7 @@ const CreateFarmForm = () => {
       const payload = {
         farmerId: parseInt(farmerId),
         farmName: formData.farmName.trim(),
-        farmtypeid: parseInt(formData.farmType),
+        farmtypeid: parseInt(formData.farmtypeid),
         farmsize: parseFloat(formData.farmsize),
         streetaddress: formData.location.trim() || "",
         town: formData.town.trim() || "",
@@ -129,7 +129,7 @@ const CreateFarmForm = () => {
 
       setFormData({
         farmName: "",
-        farmType: "",
+        farmtypeid: "",
         farmsize: "",
         location: "",
         town: "",
@@ -198,10 +198,10 @@ const CreateFarmForm = () => {
                 Farm Type <span className="text-red-500">*</span>
               </label>
               <input
-                type="text"
-                name="farmType"
+                type="number"
+                name="farmtypeid"
                 placeholder="e.g., Crop, Livestock, Mixed"
-                value={formData.farmType}
+                value={formData.farmtypeid}
                 onChange={handleChange}
                 required
                 className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
