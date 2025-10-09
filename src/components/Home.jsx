@@ -18,6 +18,7 @@ function Home() {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [farmers, setFarmers] = useState([]);
   const [officers, setOfficers] = useState([]);
+  const [livestock, setLivestock] = useState([]);
   const [notif, setNotif] = useState();
   const [theiD, setTheiD] = useState();
   const [farms, setFarms] = useState([]);
@@ -48,6 +49,38 @@ function Home() {
         console.error("Error fetching farms:", err);
         setError(err.message || "An error occurred");
         setOfficers([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFarms();
+  }, []);
+
+  useEffect(() => {
+    const fetchFarms = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+
+        const res = await fetch("/api/v1/LiveStock/GetLiveStocks", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch farms");
+        }
+        const result = await res.json();
+        setLivestock(result.data.data);
+        setError("");
+      } catch (err) {
+        console.error("Error fetching farms:", err);
+        setError(err.message || "An error occurred");
+        setLivestock([]);
       } finally {
         setLoading(false);
       }
@@ -194,16 +227,16 @@ function Home() {
                 color="indigo"
               />
               <DashboardCard
-                title="Number of Farms"
+                title="Number of Crop Farms"
                 subtitle="..."
                 value={`${farms.length}`}
                 emoji="🚜"
                 color="green"
               />
               <DashboardCard
-                title="Number of Livestock"
+                title="Number of Livestock Farms"
                 subtitle="..."
-                value="18"
+                value={`${livestock.length}`}
                 emoji="🐄"
                 color="purple"
               />

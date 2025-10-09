@@ -46,6 +46,7 @@ const Officer = () => {
 
     fetchFarms();
   }, []);
+
   useEffect(() => {
     const fetchLgaById = async () => {
       try {
@@ -68,7 +69,7 @@ const Officer = () => {
      
 
         setLgaData(result.data.data);
-        console.log(result.data.data);
+
         setError("");
       } catch (err) {
         console.error("Error fetching farms:", err);
@@ -97,7 +98,7 @@ const Officer = () => {
         if (!response.ok) {
           throw new Error(`Failed to fetch farmers: ${response.status}`);
         }
-
+     
         const data = await response.json();
         setFarmers(data.data.data || []);
       } catch (err) {
@@ -188,7 +189,7 @@ const Officer = () => {
                 />
 
                 <DashboardCard
-                  title="Number of Farms"
+                  title="Number of Crop Farms"
                   value={officer.farmers.reduce(
                     (acc, farmer) => acc + (farmer.farms?.length || 0),
                     0
@@ -197,8 +198,11 @@ const Officer = () => {
                 />
 
                 <DashboardCard
-                  title="Number of Livestock"
-                  value="12"
+                  title="Number of Livestock Farms"
+                   value={officer.farmers.reduce(
+                    (acc, farmer) => acc + (farmer.livestocks?.length || 0),
+                    0
+                  )}
                   color="purple"
                 />
               </div>

@@ -117,6 +117,10 @@ const CreateFarmForm = () => {
         result = {};
       }
 
+     
+      if ( result.success === false) {
+        throw new Error(result.message || "Failed to create farm");
+      }
       if (!response.ok) {
         throw new Error(result.message || `Server error: ${response.status}`);
       }

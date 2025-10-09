@@ -214,7 +214,7 @@ const AddUser = () => {
         {successMsg && (
           <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
             {message ? (
-              <p className="text-green-700 font-medium">{message}</p>
+              <p className="text-red-700 font-medium">{message}</p>
             ) : (
               <p className="text-green-700 font-medium">{successMsg}</p>
             )}
@@ -222,7 +222,14 @@ const AddUser = () => {
         )}
         {errorMsg && (
           <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-red-700 font-medium">{errorMsg}</p>
+            <p className="text-red-700 font-medium">
+              {errorMsg && (
+                <div>
+                  Please refresh the page, if issue persist, please contact
+                  support
+                </div>
+              )}
+            </p>
           </div>
         )}
 
