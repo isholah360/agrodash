@@ -19,6 +19,7 @@ import GLayout from "./components/gLayout";
 import Service from "../page/services";
 import AddUser from "./page/addUser";
 import PublicOfficer from "./page/publicOfficer";
+import Department from "./page/department";
 
 export default function App() {
   return (
@@ -32,7 +33,9 @@ export default function App() {
           <Route path="/createfarm" element={<CreateFarmForm />} />
           <Route path="/createfarmer" element={<CreateFarmer />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/departments" element={<Department />} />
         </Route>
+
         <Route element={<Layout />}>
           {/* <Route path="/" element={<Hero />} /> */}
           <Route path="/dashboard" element={<Home />} />
@@ -53,3 +56,25 @@ export default function App() {
     </Router>
   );
 }
+
+{/* <Route
+  element={
+    <ProtectedRoute>
+      <Layout />
+    </ProtectedRoute>
+  }
+>
+  <Route path="/dashboard" element={<Home />} />
+  <Route path="/officer" element={<Officer />} />
+  <Route path="/officer/:id" element={<OfficerDetails />} />
+  <Route path="/farmers" element={<Farmers />} />
+  <Route path="/farms" element={<Farms />} />
+  <Route path="/adduser" element={<AddUser />} />
+  <Route path="/createfarm" element={<CreateFarmForm />} />
+  <Route path="/createfarmer" element={<CreateFarmer />} />
+  <Route path="/farmers/:id" element={<FarmerDetails />} />
+  <Route path="/livestock" element={<Livestock />} />
+  <Route path="/reports" element={<Reports />} />
+  <Route path="/notification" element={<Addtask />} />
+  <Route path="/login" element={<Login />} />
+</Route>; */}

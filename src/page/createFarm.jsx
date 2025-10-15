@@ -5,7 +5,7 @@ const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const CreateFarmForm = () => {
   const [farmerId, setFarmerId] = useState("");
   const [formData, setFormData] = useState({
-    farmName: "",
+
     farmtypeid: "",
     farmsize: "",
     location: "",
@@ -86,7 +86,6 @@ const CreateFarmForm = () => {
 
       const payload = {
         farmerId: parseInt(farmerId),
-        farmName: formData.farmName.trim(),
         farmtypeid: parseInt(formData.farmtypeid),
         farmsize: parseFloat(formData.farmsize),
         streetaddress: formData.location.trim() || "",
@@ -128,7 +127,6 @@ const CreateFarmForm = () => {
       setSuccessMsg("🎉 Farm created successfully!");
 
       setFormData({
-        farmName: "",
         farmtypeid: "",
         farmsize: "",
         location: "",
@@ -178,20 +176,7 @@ const CreateFarmForm = () => {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Farm Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="farmName"
-                placeholder="Enter farm name"
-                value={formData.farmName}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
-              />
-            </div>
+           
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">

@@ -67,8 +67,8 @@ export default function GLayout() {
                 <Link to="whatwedo" className="text-gray-700 hover:text-green-600">
                   What we do
                 </Link>
-                <Link to="#sustainability" className="text-gray-700 hover:text-green-600">
-                  Sustainability
+                <Link to="departments" className="text-gray-700 hover:text-green-600">
+                  Departments
                 </Link>
               </nav>
             </div>
@@ -128,11 +128,11 @@ export default function GLayout() {
               What we do
             </Link>
             <Link
-              to="#sustainability"
+              to="departments"
               onClick={() => setMenuOpen(false)}
               className="text-gray-700 hover:text-green-600 text-right"
             >
-              Sustainability
+              Departments
             </Link>
             {user ? (
               <Link to="/" onClick={handleLogout}>
