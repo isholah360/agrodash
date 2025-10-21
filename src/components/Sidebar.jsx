@@ -10,7 +10,7 @@ const Sidebar = ({ closeSidebar }) => {
 
   const handleNagivate = () => {
     navigation("/");
-  }
+  };
 
   const menuItems = [
     { label: "Dashboard", icon: "🏠", page: "/dashboard" },
@@ -19,18 +19,25 @@ const Sidebar = ({ closeSidebar }) => {
     { label: "Farms", icon: "🚜", page: "/farms" },
     { label: "LivesStocks", icon: "🐄", page: "/livestock" },
     { label: "Notifictaion", icon: "📝", page: "/notification" },
+     { label: "CreateAsso", icon: "🤝", page: "/association" }
+    
   ];
   if (userRole === "admin" || userId === 4) {
     menuItems.push(
       { label: "AddUser", icon: "🧑‍💼", page: "/adduser" },
       { label: "CreateFarm", icon: "🧑‍💼", page: "/createfarm" },
-      { label: "CreateFarmer", icon: "🧑‍💼", page: "/createfarmer" }
+      { label: "CreateFarmer", icon: "🧑‍💼", page: "/createfarmer" },
+    
     );
   }
   return (
     <aside className="w-64 bg-white shadow-md min-h-screen p-4 border-r border-gray-200">
       <div className="flex items-center mb-8">
-        <div className="text-2xl font-bold text-green-600 my-5 pt-3 ml-2.5" onClick={handleNagivate} style={{ cursor: 'pointer' }}>
+        <div
+          className="text-2xl font-bold text-green-600 my-5 pt-3 ml-2.5"
+          onClick={handleNagivate}
+          style={{ cursor: "pointer" }}
+        >
           OyoAims
         </div>
       </div>

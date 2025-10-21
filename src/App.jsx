@@ -20,6 +20,7 @@ import Service from "../page/services";
 import AddUser from "./page/addUser";
 import PublicOfficer from "./page/publicOfficer";
 import Department from "./page/department";
+import Association from "./page/association";
 
 export default function App() {
   return (
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="/reports" element={<Reports />} />
           <Route path="/notification" element={<Addtask />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/association" element={<Association />} />
         </Route>
       </Routes>
     </Router>

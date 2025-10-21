@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
@@ -27,6 +27,7 @@ const CreateFarmer = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [association, setAssociation] = useState([]);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -48,6 +49,36 @@ const CreateFarmer = () => {
       [name]: numericFields.includes(name) ? Number(value) : value,
     }));
   };
+
+  useEffect(() => {
+    const fetchAssociation = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+        const response = await fetch(`api/v1/Association/GetAssociations`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch farmers: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setAssociation(data.data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAssociation();
+  }, []);
+
+  console.log(association);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -247,17 +278,26 @@ const CreateFarmer = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Association ID
+                  Association
                 </label>
-                <input
-                  type="number"
+                <select
                   name="associationid"
-                  placeholder="Enter association ID"
                   value={formData.associationid}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
+                  className="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+                >
+                  <option value="">Select Association</option>
+                  {association.map((assoc) => (
+                    <option
+                      key={assoc.associationid}
+                      value={assoc.associationid}
+                    >
+                      {assoc.name}
+                    </option>
+                  ))}
+                </select>
               </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Household Size

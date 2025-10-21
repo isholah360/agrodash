@@ -13,7 +13,7 @@ const colors = {
   green: "bg-green-500",
   yellow: "bg-yellow-500",
 };
-
+// api/v1/Notification/GetNotifications
 function Home() {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [farmers, setFarmers] = useState([]);
@@ -89,11 +89,9 @@ function Home() {
     fetchFarms();
   }, []);
 
-
   useEffect(() => {
     const fetchFarms = async () => {
       try {
-    
         const token = localStorage.getItem("authToken");
         const res = await fetch("/api/v1/Farm/GetFarms", {
           method: "GET",
@@ -120,37 +118,6 @@ function Home() {
     };
 
     fetchFarms();
-  }, []);
-
-  useEffect(() => {
-    const fetchFarmers = async () => {
-      try {
-        const token = localStorage.getItem("authToken");
-        const Id = localStorage.getItem("userId");
-        setTheiD(Id);
-
-        const response = await fetch(`/api/v1/Farmer/GetFarmers`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch farmers: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setFarmers(data.data.data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFarmers();
   }, []);
 
   useEffect(() => {
@@ -181,7 +148,6 @@ function Home() {
 
     fetchNotification();
   }, []);
-  console.log(notif);
 
   if (loading) {
     return (
@@ -258,27 +224,16 @@ function Home() {
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">
                     Today Notification
                   </h3>
-                  {/* <TaskCard
-                    title="Farmers Meeting"
-                    progress={58}
-                    color="pink"
-                    users={3}
-                     bg="bg-brown-100"
-                  />
-                  <TaskCard
-                    title="Meeting"
-                    progress={80}
-                    color="green"
-                    users={2}
-                    bg="bg-yellow-100"
-                  />
-                  <TaskCard
-                    title="Farm Inspection"
-                    progress={35}
-                    color="yellow"
-                    users={3}
-                     bg="bg-gray-800"
-                  /> */}
+
+                  <div>
+                    {Array.isArray(notif)
+                      ? notif.slice(0, 7).map((list) => (
+                          <ul key={list.notificationid}>
+                            <li className="bg-gray-200 p-1 pl-3 rounded-lg">{list.title}</li>
+                          </ul>
+                        ))
+                      : []}
+                  </div>
                 </div>
               </div>
             </div>
