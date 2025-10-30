@@ -5,7 +5,6 @@ const baseUrl = import.meta.env.VITE_API_BASE_URL;
 const CreateFarmForm = () => {
   const [farmerId, setFarmerId] = useState("");
   const [formData, setFormData] = useState({
-
     farmtypeid: "",
     farmsize: "",
     location: "",
@@ -19,6 +18,7 @@ const CreateFarmForm = () => {
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg2, setErrorMsg2] = useState("");
 
   useEffect(() => {
     const storedFarmerId = localStorage.getItem("farmerId");
@@ -42,11 +42,6 @@ const CreateFarmForm = () => {
   const validateForm = () => {
     if (!farmerId) {
       setErrorMsg("Farmer ID is missing. Please create a farmer first.");
-      return false;
-    }
-
-    if (!formData.farmName.trim()) {
-      setErrorMsg("Farm name is required");
       return false;
     }
 
@@ -88,13 +83,14 @@ const CreateFarmForm = () => {
         farmerId: parseInt(farmerId),
         farmtypeid: parseInt(formData.farmtypeid),
         farmsize: parseFloat(formData.farmsize),
-        streetaddress: formData.location.trim() || "",
-        town: formData.town.trim() || "",
-        postalcode: formData.postalcode.trim() || "",
+        streetaddress: (formData.location || "").trim(),
+        town: (formData.town || "").trim(),
+        postalcode: (formData.postalcode || "").trim(),
         lgaid: parseInt(formData.lgaid),
         latitude: formData.latitude ? parseFloat(formData.latitude) : 0,
         longitude: formData.longitude ? parseFloat(formData.longitude) : 0,
       };
+      console.log(payload);
 
       console.log("Submitting payload:", payload);
       console.log("Using token:", token);
@@ -110,21 +106,34 @@ const CreateFarmForm = () => {
       let result;
       try {
         const text = await response.text();
+        console.log(text);
         result = text ? JSON.parse(text) : {};
+
         console.log("Server response:", result);
       } catch (e) {
         result = {};
       }
-
-     
-      if ( result.success === false) {
-        throw new Error(result.message || "Failed to create farm");
+      if (result.data?.message) {
+        setErrorMsg2(result.data.message);
+        setTimeout(() => {
+          setErrorMsg2("");
+        }, 5000);
+        return;
       }
+
+      if (result.success === false) {
+        throw new Error(result.data?.message || "Failed to create farm");
+      }
+
       if (!response.ok) {
         throw new Error(result.message || `Server error: ${response.status}`);
       }
 
-      setSuccessMsg("🎉 Farm created successfully!");
+      if (result.data?.data) {
+        setSuccessMsg("🎉 Farm created successfully!");
+      } else {
+        throw new Error("Unexpected response format from server");
+      }
 
       setFormData({
         farmtypeid: "",
@@ -176,8 +185,6 @@ const CreateFarmForm = () => {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
-           
-
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Farm Type <span className="text-red-500">*</span>
@@ -305,6 +312,8 @@ const CreateFarmForm = () => {
                 />
               </div>
             </div>
+
+            {errorMsg2 ? <div className="text-red-400">{errorMsg2}</div> : ""}
 
             {/* Submit Button */}
             <button
