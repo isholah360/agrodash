@@ -9,7 +9,7 @@ export default function ImageCarousel() {
     {
       image: "/h.jpg",
       name: "Mr. Olatoye W. A",
-      department: "Agricultural Extension Services",
+      department: "Dir. of Agricultural Engineering Services",
     },
     {
       image: "/taofic.jpg",

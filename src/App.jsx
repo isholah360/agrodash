@@ -44,7 +44,7 @@ export default function App() {
           <Route path="/officer/:id" element={<OfficerDetails />} />
           <Route path="/farmers" element={<Farmers />} />
           <Route path="/farms" element={<Farms />} />
-          <Route path="/adduser" element={<AddUser />} />
+          <Route path="/addofficer" element={<AddUser />} />
           <Route path="/createfarm" element={<CreateFarmForm />} />
           <Route path="/createfarmer" element={<CreateFarmer />} />
           <Route path="/farmers/:id" element={<FarmerDetails />} />

@@ -1,12 +1,17 @@
 import { FaSearch, FaBell, FaSun, FaUser } from "react-icons/fa";
 import React, { useState, useRef, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate, Link } from "react-router-dom";
 
 const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [user, setUser] = useState(null);
+  const [open, setOpen] = useState(false);
   const searchRef = useRef(null);
-  const userDetail = ""; // Simulating user authentication
+  const menuRef = useRef(null);
+  const userDetail = "";
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -15,7 +20,7 @@ const Header = () => {
       setUser(payload);
     }
   }, []);
- console.log(user);
+  console.log(user);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -31,6 +36,16 @@ const Header = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showSearch]);
+
+  const handleLogout = (e) => {
+    const value = e.target.value;
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("user");
+      setUser(null);
+      navigate("/");
+    }
+  
+  
 
   return (
     <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
@@ -76,9 +91,31 @@ const Header = () => {
 
         {user ? (
           <>
-          <div className="">
-            {user.UserName}
-          </div>
+            <div className="relative inline-block text-left">
+              <button
+                onClick={() => setOpen(!open)}
+                className="bg-transparent text-gray-800 font-semibold focus:outline-none"
+              >
+                {user.UserName}
+              </button>
+
+              {open && (
+                <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-md">
+                  <Link
+                    to="#/profile#"
+                    className="block px-4 py-2 hover:bg-green-100 hover:text-green-600"
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 hover:bg-red-100 hover:text-red-600"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </>
         ) : (
           <FaUser />
