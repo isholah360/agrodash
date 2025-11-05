@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+ import { useNavigate } from "react-router-dom";
 
 const Association = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +8,7 @@ const Association = () => {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const Navigate = useNavigate();
 
   // Handle input change
   const handleChange = (e) => {
@@ -41,6 +43,7 @@ const Association = () => {
 
       const result = await res.json();
       setMessage("✅ Association created successfully!");
+      Navigate('/association/list');
       setFormData({ name: "", registrationno: "" });
       console.log("Response:", result);
     } catch (err) {

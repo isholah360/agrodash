@@ -21,6 +21,13 @@ import AddUser from "./page/addUser";
 import PublicOfficer from "./page/publicOfficer";
 import Department from "./page/department";
 import Association from "./page/association";
+import Crops from "./page/crops";
+import Livestocks from "./page/livestock";
+import Feeds from "./page/feeds";
+import Processor from "./page/processor";
+import Admin from "./page/admin";
+import AssoList from "./page/assoList";
+import EditAsso from "./page/editAsso";
 
 export default function App() {
   return (
@@ -52,7 +59,14 @@ export default function App() {
           <Route path="/reports" element={<Reports />} />
           <Route path="/notification" element={<Addtask />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/association" element={<Association />} />
+          <Route path="/crops" element={<Crops />} />
+          <Route path="/livestocks" element={<Livestocks />} />
+          <Route path="/feeds" element={<Feeds />} />
+          <Route path="/processors" element={<Processor />} />
+          <Route path="/adminProfile" element={<Admin />} />
+          <Route path="/association/create" element={<Association />} />
+          <Route path="/association/list" element={<AssoList/>} />
+          <Route path="/associations/edit/:id" element={<EditAsso/>} />
         </Route>
       </Routes>
     </Router>

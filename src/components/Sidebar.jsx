@@ -46,7 +46,7 @@ const Sidebar = ({ closeSidebar }) => {
         { label: "Livestocks", icon: "🐄", page: "/livestocks" },
         { label: "Crop", icon: "🌾", page: "/crops" },
         { label: "Feed", icon: "🥜", page: "/feeds" },
-        { label: "Processor", icon: "🏭", page: "/processor" },
+        { label: "Processor", icon: "🏭", page: "/processors" },
       ],
     },
 
@@ -58,24 +58,24 @@ const Sidebar = ({ closeSidebar }) => {
       ], },
     { label: "Associations", icon: "🤝", page: "#/association",
       submenu: [
-        { label: "Associations", icon: "🤝", page: "/association" },
-        { label: "CreateAssociation", icon: "🤝", page: "/association" },
+        { label: "Associations", icon: "🤝", page: "/association/list" },
+        { label: "CreateAssociation", icon: "🤝", page: "/association/create" },
         
       ],  },
   ];
 
-  if (userRole === "admin" || userId === 4) {
-    menuItems.push({
-      label: "Admin Tools",
-      icon: "🧑‍💼",
-      page: "#",
-      submenu: [
-        { label: "Add User", page: "/adduser" },
-        { label: "Create Farm", page: "/createfarm" },
-        { label: "Create Farmer", page: "/createfarmer" },
-      ],
-    });
-  }
+  // if (userRole === "admin" || userId === 4) {
+  //   menuItems.push({
+  //     label: "Admin Tools",
+  //     icon: "🧑‍💼",
+  //     page: "#",
+  //     submenu: [
+  //       { label: "Add User", page: "/adduser" },
+  //       { label: "Create Farm", page: "/createfarm" },
+  //       { label: "Create Farmer", page: "/createfarmer" },
+  //     ],
+  //   });
+  // }
 
   return (
     <aside className="w-64 bg-white shadow-md min-h-screen p-4 border-r border-gray-200">

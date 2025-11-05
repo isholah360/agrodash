@@ -49,7 +49,7 @@ const Header = () => {
 
   return (
     <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-      {/* Left: Weather or logo or other */}
+     
       <div className="text-sm text-gray-600 flex items-center ml-8">
         <svg
           className="w-4 h-4 mr-1"
@@ -67,9 +67,9 @@ const Header = () => {
         26°C
       </div>
 
-      {/* Right: Icons + search */}
+
       <div className="flex items-center space-x-4" ref={searchRef}>
-        {/* Toggleable Search Input */}
+       
         {showSearch && (
           <input
             type="text"
@@ -102,7 +102,7 @@ const Header = () => {
               {open && (
                 <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-md">
                   <Link
-                    to="#/profile#"
+                    to="/adminProfile"
                     className="block px-4 py-2 hover:bg-green-100 hover:text-green-600"
                   >
                     Profile
