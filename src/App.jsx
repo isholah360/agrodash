@@ -28,6 +28,9 @@ import Processor from "./page/processor";
 import Admin from "./page/admin";
 import AssoList from "./page/assoList";
 import EditAsso from "./page/editAsso";
+import UserProfile from "./page/userProfile";
+import ForgotPassword from "./page/resetPw";
+import ResetPassword from "./page/ResetPassword";
 
 export default function App() {
   return (
@@ -42,6 +45,10 @@ export default function App() {
           <Route path="/createfarmer" element={<CreateFarmer />} />
           <Route path="/login" element={<Login />} />
           <Route path="/departments" element={<Department />} />
+          <Route path="/userProfile/:id" element={<UserProfile />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route path="/reset-pw" element={<ResetPassword />} />
         </Route>
 
         <Route element={<Layout />}>

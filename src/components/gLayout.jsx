@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useLocation , useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { jwtDecode } from "jwt-decode";
 import Footer from "../../page/footer.";
@@ -7,8 +7,10 @@ import Footer from "../../page/footer.";
 export default function GLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const location = useLocation(); 
- const navigate = useNavigate();
+   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(user)
 
   const checkAuth = () => {
     try {
@@ -29,10 +31,9 @@ export default function GLayout() {
     }
   };
 
- 
   useEffect(() => {
     checkAuth();
-  }, [location]); 
+  }, [location]);
 
   console.log("Current user:", user);
 
@@ -52,8 +53,10 @@ export default function GLayout() {
             <div className="container mx-auto px-4 py-4 flex items-center justify-between">
               {/* Logo */}
               <div className="flex items-center">
+                <Link to="/" className="flex items-center space-x-1">
                 <span className="text-black text-2xl font-bold">Oyo</span>
                 <span className="text-green-600 text-2xl font-bold">Aims</span>
+                </Link>
               </div>
 
               {/* Desktop Nav */}
@@ -64,10 +67,16 @@ export default function GLayout() {
                 <Link to="about" className="text-gray-700 hover:text-green-600">
                   About
                 </Link>
-                <Link to="whatwedo" className="text-gray-700 hover:text-green-600">
+                <Link
+                  to="whatwedo"
+                  className="text-gray-700 hover:text-green-600"
+                >
                   What we do
                 </Link>
-                <Link to="departments" className="text-gray-700 hover:text-green-600">
+                <Link
+                  to="departments"
+                  className="text-gray-700 hover:text-green-600"
+                >
                   Departments
                 </Link>
               </nav>
@@ -76,19 +85,41 @@ export default function GLayout() {
         </div>
 
         <div className="w-1/2">
-          <div className="hidden lg:block bg-black absolute top-10 text-amber-100 right-10 px-4 py-2 rounded-full text-sm">
+          <div className="hidden lg:block bg-gray-500 absolute top-10 text-amber-100 right-10 px-2 py-2 rounded-full text-sm">
             {user ? (
-              <button
-                onClick={handleLogout}
-                className="text-white hover:text-green-600"
-              >
-                Logout
-              </button>
+              <div className="relative inline-block text-left">
+                <div
+                  onClick={() => setOpen(!open)}
+                  className="bg-transparent text-xl text-white font-semibold focus:outline-none"
+                >
+                  👤
+                </div>
+
+                {open && (
+                  <div className="absolute right-0 mt-2 w-40 bg-gray-100 border rounded shadow-md">
+                    <Link
+                      to={user !== 4 ? `/userProfile/${user}` : "/adminProfile" }
+                      className="block text-black px-4 py-2 hover:bg-green-100 hover:text-green-600"
+                    >
+                      Profile
+                    </Link>
+                    <Link
+                      to={user !== 4 ? `/user` : "/dashboard" }
+                      className="block text-black px-4 py-2 hover:bg-green-100 hover:text-green-600"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full text-left text-black px-4 py-2 hover:bg-red-100 hover:text-red-600"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
             ) : (
-              <Link
-                to="login"
-                className="text-white hover:text-green-600"
-              >
+              <Link to="login" className="text-white hover:text-green-600">
                 Login
               </Link>
             )}
@@ -136,12 +167,12 @@ export default function GLayout() {
             </Link>
             {user ? (
               <Link to="/" onClick={handleLogout}>
-              <button
-                onClick={handleLogout}
-                className="mt-2 text-white rounded-2xl bg-black hover:text-green-600 text-center px-3 py-1"
-              >
-                Logout
-              </button>
+                <button
+                  onClick={handleLogout}
+                  className="mt-2 text-white rounded-2xl bg-black hover:text-green-600 text-center px-3 py-1"
+                >
+                  Logout
+                </button>
               </Link>
             ) : (
               <Link

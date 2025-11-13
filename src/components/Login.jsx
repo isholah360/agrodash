@@ -1,18 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-
-
-const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [userRole, setUserRole] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [user, setUser] = useState();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,50 +20,27 @@ const Login = () => {
       const encodedUserName = encodeURIComponent(userName);
       const encodedPassword = encodeURIComponent(password);
 
-   
       const response = await fetch(
         `/api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           credentials: "include",
         }
       );
 
-      console.log("Response status:", response.status);
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        throw new Error(
-          errorData?.message || `Login failed: ${response.statusText}`
-        );
-      }
+      if (!response.ok) throw new Error("Invalid credentials");
 
       const loginData = await response.json();
-      console.log("Login response:", loginData.data.data);
+      localStorage.setItem("authToken", loginData.data.data);
+      const payload = jwtDecode(loginData.data.data);
 
-      if (loginData.data) {
-        localStorage.setItem("authToken", loginData.data.data);
-        const payload = jwtDecode(loginData.data.data);
-        console.log("Decoded JWT payload:", payload);
-        localStorage.setItem("user", payload);
-        localStorage.setItem("userId", payload.UserId);
-        setUserRole(payload.role);
-        setUser(payload);
-        if (payload.role === "1") {
-          navigate("/dashboard");
-        } else {
-          navigate("/user");
-        }
-      }
+      localStorage.setItem("userId", payload.UserId);
+      localStorage.setItem("userRole", payload.role);
 
-      setSuccess("Login successful!");
-
+      navigate(payload.role === "1" ? "/dashboard" : "/user");
     } catch (err) {
       setError(err.message || "Something went wrong.");
-      console.error("Login error:", err);
     } finally {
       setLoading(false);
     }
@@ -84,14 +56,14 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Username/Email
+              Username / Email
             </label>
             <input
               type="email"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               placeholder="Enter your email"
               disabled={loading}
             />
@@ -106,52 +78,39 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               placeholder="Enter your password"
               disabled={loading}
             />
           </div>
 
+          <div className="flex justify-end">
+            <Link
+              to="/forgot-password"
+              className="text-sm text-green-600 hover:text-green-800 font-medium"
+            >
+              Forgot Password?
+            </Link>
+          </div>
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-green-600 hover:bg-green-400 disabled:bg-purple-300 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-green-300 text-white py-2 px-4 rounded-lg font-medium transition-colors"
           >
-            {loading ? (
-              <span className="flex items-center justify-center">
-                <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  />
-                </svg>
-                Logging in...
-              </span>
-            ) : (
-              "Login"
-            )}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         {error && (
-          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <p className="text-sm text-red-600">{error && <div className="text-red-400">Wrong credentials</div>}</p>
+          <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm text-center">
+            {error}
           </div>
         )}
 
         {success && (
-          <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-            <p className="text-sm text-green-600">{success}</p>
+          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-600 text-sm text-center">
+            {success}
           </div>
         )}
       </div>
