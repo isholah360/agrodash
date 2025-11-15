@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 const ResetPassword = () => {
   const { token } = useParams(); 
   const navigate = useNavigate();
+  console.log("Reset token:", token);
 
   const [formData, setFormData] = useState({
     newPassword: "",
@@ -32,10 +33,15 @@ const ResetPassword = () => {
       setLoading(false);
       return;
     }
+    if (formData.newPassword.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch(
-        "https://oyo-agri-backend-production.up.railway.app/api/v1/User/reset-password",
+        "/api/v1/User/reset-password",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -46,7 +52,7 @@ const ResetPassword = () => {
           }),
         }
       );
-
+  console.log("Response status:", response);
       const data = await response.json();
 
       if (!response.ok) {

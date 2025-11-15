@@ -26,12 +26,12 @@ const ForgotPassword = () => {
 
       if (!response.ok) throw new Error("Failed to send reset email");
 
-      const data = await response.json();
+      const result = await response.json();
      
-      console.log(data);
-      setMessage(data.message || "Reset email sent successfully!");
-     if(data.data.token){
-        navigate(`/reset-password/${data.data.token}`);
+      console.log(result.data);
+      setMessage(result.message || "Reset email sent successfully!");
+     if(result.data?.data){
+        navigate(`/reset-password/${result.data?.data}`);
       }
     } catch (err) {
       setError(err.message || "Error sending password reset email.");
