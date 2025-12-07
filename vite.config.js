@@ -10,12 +10,6 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api/v1': {
-        target: 'https://oyoagro-api.onrender.com',
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, '/api')
-      },
      "/api": {
         target: "https://allied-lake.vercel.app",
         changeOrigin: true,
