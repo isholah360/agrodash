@@ -9,7 +9,7 @@ export default function Analytics() {
   useEffect(() => {
     const loadAnalytics = async () => {
       try {
-        const res = await fetch("/api/admins/analytics");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/admins/analytics`);
         if (!res.ok) throw new Error("Failed to fetch analytics");
 
         const data = await res.json();

@@ -25,12 +25,12 @@ const OfficersPage = () => {
 
         const [offRes, farmerRes, farmRes, cropRes, liveRes, agroRes] =
           await Promise.all([
-            fetch("/api/get/officers", { headers: { Authorization: `Bearer ${token}` } }),
-            fetch("/api/get/farmers", { headers: { Authorization: `Bearer ${token}` } }),
-            fetch("/api/get/farms/all", { headers: { Authorization: `Bearer ${token}` } }),
-            fetch("/api/get/crops/all", { headers: { Authorization: `Bearer ${token}` } }),
-            fetch("/api/get/livestocks/all", { headers: { Authorization: `Bearer ${token}` } }),
-            fetch("/api/Agroallied/pro/getall", { headers: { Authorization: `Bearer ${token}` } }),
+            fetch(`${import.meta.env.VITE_API_URL}/api/get/officers`, { headers: { Authorization: `Bearer ${token}` } }),
+            fetch(`${import.meta.env.VITE_API_URL}/api/get/farmers`, { headers: { Authorization: `Bearer ${token}` } }),
+            fetch(`${import.meta.env.VITE_API_URL}/api/get/farms/all`, { headers: { Authorization: `Bearer ${token}` } }),
+            fetch(`${import.meta.env.VITE_API_URL}/api/get/crops/all`, { headers: { Authorization: `Bearer ${token}` } }),
+            fetch(`${import.meta.env.VITE_API_URL}/api/get/livestocks/all`, { headers: { Authorization: `Bearer ${token}` } }),
+            fetch(`${import.meta.env.VITE_API_URL}/api/Agroallied/pro/getall`, { headers: { Authorization: `Bearer ${token}` } }),
           ]);
 
         const [

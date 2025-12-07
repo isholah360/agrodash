@@ -26,7 +26,7 @@ const LivestockPage = () => {
       try {
         setLoading(true);
 
-        const res = await fetch("/api/get/livestocks/all", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/get/livestocks/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

@@ -33,7 +33,7 @@ const Dashboard = () => {
 
         const responses = await Promise.all(
           endpoints.map((endpoint) =>
-            fetch(`/api/get/${endpoint}`, {
+            fetch(`${import.meta.env.VITE_API_URL}/api/get/${endpoint}`, {
               headers: { Authorization: `Bearer ${token}` },
             })
           )

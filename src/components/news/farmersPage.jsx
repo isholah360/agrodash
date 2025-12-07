@@ -17,7 +17,7 @@ const FarmersPage = () => {
       try {
         setLoading(true);
 
-        const res = await fetch("/api/get/farmers", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/get/farmers` {
           headers: { Authorization: `Bearer ${token}` },
         });
 

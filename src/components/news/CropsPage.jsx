@@ -24,7 +24,7 @@ const CropsPage = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await fetch("/api/get/crops/all", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/get/crops/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
