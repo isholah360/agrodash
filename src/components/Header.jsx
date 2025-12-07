@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [user, setUser] = useState(null);
+  const [userName, setUserName] = useState(null);
   const [open, setOpen] = useState(false);
   const searchRef = useRef(null);
   const menuRef = useRef(null);
@@ -14,10 +15,12 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
+    const name = localStorage.getItem("username");
     if (token) {
       const payload = jwtDecode(token);
       setUser(payload);
+      setUserName(name);
     }
   }, []);
   console.log(user);
@@ -39,8 +42,8 @@ const Header = () => {
 
   const handleLogout = (e) => {
     const value = e.target.value;
-      localStorage.removeItem("authToken");
-      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
       setUser(null);
       navigate("/");
     }
@@ -96,7 +99,7 @@ const Header = () => {
                 onClick={() => setOpen(!open)}
                 className="bg-transparent text-gray-800 font-semibold focus:outline-none"
               >
-                {user.UserName}
+                {userName || "User"}
               </button>
 
               {open && (

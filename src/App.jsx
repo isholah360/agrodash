@@ -9,7 +9,7 @@ import Livestock from "./components/Livestock";
 import Reports from "./components/Reports";
 import FarmerDetails from "./components/FarmerDetails";
 import Addtask from "./page/addTask";
-import Login from "./components/Login";
+// import Login from "./components/Login";
 import Hero from "../page/Hero";
 import Farms from "../page/Farms";
 import CreateFarmForm from "./page/createFarm";
@@ -36,6 +36,8 @@ import FarmersPage from "./components/news/farmersPage";
 import LivestockPage from "./components/news/LivestockPage";
 import CropsPage from "./components/news/CropsPage";
 import AgroAlliedPage from "./components/news/AgroAlliedPage";
+import Login from "./components/news/Login";
+import SingleOfficer from "./components/news/singleOfficer";
 
 export default function App() {
   return (
@@ -62,6 +64,7 @@ export default function App() {
           <Route path="/officer" element={<OfficersPage />} />
           <Route path="/officer/:id" element={<OfficerDetails />} />
           <Route path="/farmers" element={<FarmersPage/>} />
+          <Route path="/officers/:id" element={<SingleOfficer/>} />
           <Route path="/farms" element={<Farms />} />
           <Route path="/addofficer" element={<AddUser />} />
           <Route path="/createfarm" element={<CreateFarmForm />} />
