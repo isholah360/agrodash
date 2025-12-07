@@ -10,11 +10,17 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'https://oyo-agri-backend-production.up.railway.app',
+      '/api/v1': {
+        target: 'https://oyoagro-api.onrender.com',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, '/api')
+      },
+     "/api": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, "/api"),
       },
     },
   },

@@ -8,6 +8,7 @@ import Officer from "./Officer";
 import TaskCard from "./TaskCard";
 import Tracker from "./Tracker";
 import ChartCard from "./ChartCard";
+import Dashboard from "./news/dashboard";
 const colors = {
   pink: "bg-pink-500",
   green: "bg-green-500",
@@ -177,7 +178,7 @@ function Home() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8 sm">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-8 sm">
               <DashboardCard
                 title="Number of Officers"
                 subtitle="..."
@@ -206,14 +207,16 @@ function Home() {
                 emoji="🐄"
                 color="purple"
               />
-            </div>
+            </div> */}
 
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+            <Dashboard />
+
+            {/* <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">
                 Officers
               </h3>
               <ProjectTable />
-            </div>
+            </div> */}
             <div className="bg-white rounded-xl flex shadow-sm border border-gray-200 p-5 mt-10">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                 <ChartCard />

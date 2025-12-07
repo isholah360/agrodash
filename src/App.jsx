@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Officer from "./components/Officer";
+// import Officer from "./components/Officer";
 import Home from "./components/Home";
 import OfficerDetails from "./components/OfficerDetails";
-import Farmers from "./components/Farmers";
+// import Farmers from "./components/Farmers";
 import Livestock from "./components/Livestock";
 import Reports from "./components/Reports";
 import FarmerDetails from "./components/FarmerDetails";
@@ -21,16 +21,21 @@ import AddUser from "./page/addUser";
 import PublicOfficer from "./page/publicOfficer";
 import Department from "./page/department";
 import Association from "./page/association";
-import Crops from "./page/crops";
-import Livestocks from "./page/livestock";
+// import Crops from "./page/crops";
+// import Livestocks from "./page/livestock";
 import Feeds from "./page/feeds";
-import Processor from "./page/processor";
+// import Processor from "./page/processor";
 import Admin from "./page/admin";
 import AssoList from "./page/assoList";
 import EditAsso from "./page/editAsso";
 import UserProfile from "./page/userProfile";
 import ForgotPassword from "./page/resetPw";
 import ResetPassword from "./page/ResetPassword";
+import OfficersPage from "./components/news/offficerPage";
+import FarmersPage from "./components/news/farmersPage";
+import LivestockPage from "./components/news/LivestockPage";
+import CropsPage from "./components/news/CropsPage";
+import AgroAlliedPage from "./components/news/AgroAlliedPage";
 
 export default function App() {
   return (
@@ -54,9 +59,9 @@ export default function App() {
         <Route element={<Layout />}>
           {/* <Route path="/" element={<Hero />} /> */}
           <Route path="/dashboard" element={<Home />} />
-          <Route path="/officer" element={<Officer />} />
+          <Route path="/officer" element={<OfficersPage />} />
           <Route path="/officer/:id" element={<OfficerDetails />} />
-          <Route path="/farmers" element={<Farmers />} />
+          <Route path="/farmers" element={<FarmersPage/>} />
           <Route path="/farms" element={<Farms />} />
           <Route path="/addofficer" element={<AddUser />} />
           <Route path="/createfarm" element={<CreateFarmForm />} />
@@ -66,10 +71,10 @@ export default function App() {
           <Route path="/reports" element={<Reports />} />
           <Route path="/notification" element={<Addtask />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/crops" element={<Crops />} />
-          <Route path="/livestocks" element={<Livestocks />} />
+          <Route path="/crops" element={<CropsPage />} />
+          <Route path="/livestocks" element={<LivestockPage />} />
           <Route path="/feeds" element={<Feeds />} />
-          <Route path="/processors" element={<Processor />} />
+          <Route path="/processors" element={<AgroAlliedPage />} />
           <Route path="/adminProfile" element={<Admin />} />
           <Route path="/association/create" element={<Association />} />
           <Route path="/association/list" element={<AssoList/>} />

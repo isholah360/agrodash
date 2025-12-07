@@ -45,8 +45,7 @@ const Sidebar = ({ closeSidebar }) => {
       submenu: [
         { label: "Livestocks", icon: "🐄", page: "/livestocks" },
         { label: "Crop", icon: "🌾", page: "/crops" },
-        { label: "Feed", icon: "🥜", page: "/feeds" },
-        { label: "Processor", icon: "🏭", page: "/processors" },
+        { label: "AgroAllied", icon: "🏭", page: "/processors" },
       ],
     },
 
