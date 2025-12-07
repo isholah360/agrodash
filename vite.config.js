@@ -17,7 +17,7 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, '/api')
       },
      "/api": {
-        target: "http://localhost:5000",
+        target: "https://allied-lake.vercel.app",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, "/api"),
