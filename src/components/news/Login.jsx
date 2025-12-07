@@ -131,7 +131,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError(""); // clear error when typing
@@ -144,29 +144,29 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("api/officers/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/officers/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
-  
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.message || "Invalid email or password");
       }
 
-     
       const data = await response.json();
       setSuccess("Login successful!");
       console.log("✅ Logged in:", data, data.officer.id);
       localStorage.setItem("token", data.token);
       localStorage.setItem("username", data.officer.username);
-    
-       if(data.officer.email === "isholah@gmail.com"){
+
+      if (data.officer.email === "isholah@gmail.com") {
         navigate("/dashboard");
-      }
-      else {
+      } else {
         navigate(`/officers/${data.officer.id}`);
       }
 
@@ -175,10 +175,8 @@ const Login = () => {
       // } else {
       //   navigate(`/officer/${data.officer.id}`);
       // }
-
     } catch (err) {
       if (err.name === "TypeError") {
-       
         setError("Network error — please check your connection.");
       } else {
         setError(err.message);
@@ -190,7 +188,6 @@ const Login = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-br ">
-     
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-green-700 mb-6">
           Welcome Back 👋
@@ -200,7 +197,6 @@ const Login = () => {
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-      
           <div>
             <label
               htmlFor="email"
@@ -220,7 +216,6 @@ const Login = () => {
             />
           </div>
 
-         
           <div>
             <label
               htmlFor="password"
@@ -240,34 +235,28 @@ const Login = () => {
             />
           </div>
 
-      
           {error && (
             <div className="bg-red-100 text-red-700 px-4 py-2 rounded-md text-sm text-center">
               {error}
             </div>
           )}
 
-       
           {success && (
             <div className="bg-green-100 text-green-700 px-4 py-2 rounded-md text-sm text-center">
               {success}
             </div>
           )}
 
-        
           <button
             type="submit"
             disabled={loading}
             className={`w-full bg-green-600 text-white py-2 rounded-md font-semibold transition duration-200 ${
-              loading
-                ? "opacity-60 cursor-not-allowed"
-                : "hover:bg-green-700"
+              loading ? "opacity-60 cursor-not-allowed" : "hover:bg-green-700"
             }`}
           >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
-
 
         <div className="text-center mt-6">
           <a href="#" className="text-green-700 hover:underline text-sm">
@@ -290,4 +279,3 @@ const Login = () => {
 };
 
 export default Login;
-
