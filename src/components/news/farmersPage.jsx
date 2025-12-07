@@ -17,7 +17,7 @@ const FarmersPage = () => {
       try {
         setLoading(true);
 
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/get/farmers` {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/get/farmers`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -42,14 +42,15 @@ const FarmersPage = () => {
   const filteredFarmers = useMemo(() => {
     const term = search.toLowerCase();
 
-    return farmers.filter((f) => 
-      f.name?.toLowerCase().includes(term) ||
-      f.email?.toLowerCase().includes(term) ||
-      f.phone?.toLowerCase().includes(term) ||
-      f.address?.toLowerCase().includes(term) ||
-      f.lga?.toLowerCase().includes(term) ||
-      f.nationalId?.toLowerCase().includes(term) ||
-      f.officerId?.toLowerCase().includes(term)
+    return farmers.filter(
+      (f) =>
+        f.name?.toLowerCase().includes(term) ||
+        f.email?.toLowerCase().includes(term) ||
+        f.phone?.toLowerCase().includes(term) ||
+        f.address?.toLowerCase().includes(term) ||
+        f.lga?.toLowerCase().includes(term) ||
+        f.nationalId?.toLowerCase().includes(term) ||
+        f.officerId?.toLowerCase().includes(term)
     );
   }, [search, farmers]);
 
@@ -94,12 +95,8 @@ const FarmersPage = () => {
                 <h2 className="text-xl font-bold text-gray-800 mb-1">
                   👨‍🌾 {farmer.name}
                 </h2>
-                <p className="text-gray-600 text-sm mb-1">
-                  📞 {farmer.phone}
-                </p>
-                <p className="text-gray-600 text-sm mb-1">
-                  ✉️ {farmer.email}
-                </p>
+                <p className="text-gray-600 text-sm mb-1">📞 {farmer.phone}</p>
+                <p className="text-gray-600 text-sm mb-1">✉️ {farmer.email}</p>
                 <p className="text-gray-600 text-sm mb-1">
                   📍 {farmer.address}
                 </p>
@@ -125,7 +122,8 @@ const FarmersPage = () => {
           {/* PAGINATION */}
           <div className="flex justify-between items-center mt-10">
             <p className="text-gray-600">
-              Showing {paginatedFarmers.length} of {filteredFarmers.length} farmers
+              Showing {paginatedFarmers.length} of {filteredFarmers.length}{" "}
+              farmers
             </p>
 
             <div className="flex space-x-1">
@@ -142,9 +140,7 @@ const FarmersPage = () => {
                   key={n}
                   onClick={() => setCurrentPage(n + 1)}
                   className={`px-3 py-1 rounded ${
-                    currentPage === n + 1
-                      ? "bg-green-700 text-white"
-                      : "border"
+                    currentPage === n + 1 ? "bg-green-700 text-white" : "border"
                   }`}
                 >
                   {n + 1}
@@ -152,7 +148,9 @@ const FarmersPage = () => {
               ))}
 
               <button
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(totalPages, p + 1))
+                }
                 disabled={currentPage === totalPages}
                 className="px-3 py-1 border rounded disabled:opacity-40"
               >
