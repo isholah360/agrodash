@@ -21,7 +21,7 @@ const Login = () => {
       const encodedPassword = encodeURIComponent(password);
 
       const response = await fetch(
-        `/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
+        `api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
