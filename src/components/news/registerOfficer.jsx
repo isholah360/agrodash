@@ -36,7 +36,7 @@ const RegisterOfficer = () => {
     };
   
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/officer/create`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/officers/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,15 +45,15 @@ const RegisterOfficer = () => {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to create farm");
+        throw new Error("Failed to create officer");
       }
 
       const data = await res.json();
-      alert("✅ Farm created successfully!");
+      alert("✅ officer created successfully!");
       console.log("Server response:", data);
     } catch (err) {
       console.error("Error:", err);
-      alert("❌ Error creating farm. Check console for details.");
+      alert("❌ Error creating officer. Check console for details.");
     } finally {
       setLoading(false);
     }
