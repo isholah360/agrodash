@@ -26,14 +26,15 @@ const RegisterOfficer = () => {
     setLoading(true);
 
     const payload = {
-      officerId,
-      farmerId,
-      name: formData.name,
-      location: formData.location,
-      size: parseFloat(formData.size),
-      soilType: formData.soilType,
+    name: formData.name,
+    username: formData.username,
+    email: formData.email,
+    password: formData.password,
+    phone: formData.phone,
+    address: formData.address,
+    adminId: formData.adminId,
     };
-
+  
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/officer/create`, {
         method: "POST",
