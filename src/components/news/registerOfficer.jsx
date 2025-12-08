@@ -257,19 +257,8 @@ const RegisterOfficer = () => {
           </button>
         </form>
 
-        <div className="text-center mt-6">
-          <p className="text-gray-600 text-sm mt-3">
-            Already have an account?{" "}
-            <a href="/login" className="text-green-700 hover:underline">
-              Login
-            </a>
-          </p>
-        </div>
+        
       </div>
-
-      <p className="text-white mt-8 text-sm opacity-80">
-        © {new Date().getFullYear()} AgroBase — All rights reserved.
-      </p>
     </div>
   );
 };
