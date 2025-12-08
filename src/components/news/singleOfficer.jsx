@@ -13,7 +13,7 @@ const SingleOfficer = () => {
   useEffect(() => {
     const fetchOfficerData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/officers/${officerId}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/officers/${officerId}`);
         if (!response.ok) throw new Error("Failed to fetch officer data");
         const result = await response.json();
 

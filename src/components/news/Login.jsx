@@ -145,7 +145,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/officers/login`,
+        `${import.meta.env.VITE_API_URL}/officers/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
