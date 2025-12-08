@@ -26,145 +26,145 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchFarms = async () => {
-      try {
-        const token = localStorage.getItem("authToken");
+  // useEffect(() => {
+  //   const fetchFarms = async () => {
+  //     try {
+  //       const token = localStorage.getItem("authToken");
 
-        const res = await fetch("api/v1/User/GetOfficers", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  //       const res = await fetch("api/v1/User/GetOfficers", {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Accept: "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        if (!res.ok) {
-          throw new Error("Failed to fetch farms");
-        }
-        const result = await res.json();
-        setOfficers(result.data.data);
-        setError("");
-      } catch (err) {
-        console.error("Error fetching farms:", err);
-        setError(err.message || "An error occurred");
-        setOfficers([]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch farms");
+  //       }
+  //       const result = await res.json();
+  //       setOfficers(result.data.data);
+  //       setError("");
+  //     } catch (err) {
+  //       console.error("Error fetching farms:", err);
+  //       setError(err.message || "An error occurred");
+  //       setOfficers([]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchFarms();
-  }, []);
+  //   fetchFarms();
+  // }, []);
 
-  useEffect(() => {
-    const fetchFarms = async () => {
-      try {
-        const token = localStorage.getItem("authToken");
+  // useEffect(() => {
+  //   const fetchFarms = async () => {
+  //     try {
+  //       const token = localStorage.getItem("authToken");
 
-        const res = await fetch("/api/v1/LiveStock/GetLiveStocks", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  //       const res = await fetch("/api/v1/LiveStock/GetLiveStocks", {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Accept: "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        if (!res.ok) {
-          throw new Error("Failed to fetch farms");
-        }
-        const result = await res.json();
-        setLivestock(result.data.data);
-        setError("");
-      } catch (err) {
-        console.error("Error fetching farms:", err);
-        setError(err.message || "An error occurred");
-        setLivestock([]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch farms");
+  //       }
+  //       const result = await res.json();
+  //       setLivestock(result.data.data);
+  //       setError("");
+  //     } catch (err) {
+  //       console.error("Error fetching farms:", err);
+  //       setError(err.message || "An error occurred");
+  //       setLivestock([]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchFarms();
-  }, []);
+  //   fetchFarms();
+  // }, []);
 
-  useEffect(() => {
-    const fetchFarms = async () => {
-      try {
-        const token = localStorage.getItem("authToken");
-        const res = await fetch("/api/v1/Farm/GetFarms", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  // useEffect(() => {
+  //   const fetchFarms = async () => {
+  //     try {
+  //       const token = localStorage.getItem("authToken");
+  //       const res = await fetch("/api/v1/Farm/GetFarms", {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Accept: "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        if (!res.ok) {
-          throw new Error("Failed to fetch farms");
-        }
-        const result = await res.json();
-        setFarms(result.data.data);
-        setError("");
-      } catch (err) {
-        console.error("Error fetching farms:", err);
-        setError(err.message || "An error occurred");
-        setFarms([]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch farms");
+  //       }
+  //       const result = await res.json();
+  //       setFarms(result.data.data);
+  //       setError("");
+  //     } catch (err) {
+  //       console.error("Error fetching farms:", err);
+  //       setError(err.message || "An error occurred");
+  //       setFarms([]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchFarms();
-  }, []);
+  //   fetchFarms();
+  // }, []);
 
-  useEffect(() => {
-    const fetchNotification = async () => {
-      try {
-        const token = localStorage.getItem("authToken");
-        const Id = localStorage.getItem("userId");
-        setTheiD(Id);
-        const response = await fetch(`api/v1/Notification/GetNotifications`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  // useEffect(() => {
+  //   const fetchNotification = async () => {
+  //     try {
+  //       const token = localStorage.getItem("authToken");
+  //       const Id = localStorage.getItem("userId");
+  //       setTheiD(Id);
+  //       const response = await fetch(`api/v1/Notification/GetNotifications`, {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        if (!response.ok) {
-          throw new Error(`Failed to fetch farmers: ${response.status}`);
-        }
-        const data = await response.json();
-        setNotif(data.data.data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       if (!response.ok) {
+  //         throw new Error(`Failed to fetch farmers: ${response.status}`);
+  //       }
+  //       const data = await response.json();
+  //       setNotif(data.data.data);
+  //     } catch (err) {
+  //       setError(err.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchNotification();
-  }, []);
+  //   fetchNotification();
+  // }, []);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64 text-green-700 text-lg font-semibold">
-        Loading farmers...
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="flex justify-center items-center h-64 text-green-700 text-lg font-semibold">
+  //       Loading farmers...
+  //     </div>
+  //   );
+  // }
 
-  if (error) {
-    return (
-      <div className="text-center text-red-600 font-semibold mt-10">
-        Error: {error}
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="text-center text-red-600 font-semibold mt-10">
+  //       Error: {error}
+  //     </div>
+  //   );
+  // }
   return (
     <div className="flex min-h-screen bg-gray-50 font-sans">
       <main className="flex-1 p-6">
@@ -228,7 +228,7 @@ function Home() {
                     Today Notification
                   </h3>
 
-                  <div>
+                  {/* <div>
                     {Array.isArray(notif)
                       ? notif.slice(0, 7).map((list) => (
                           <ul key={list.notificationid}>
@@ -236,7 +236,7 @@ function Home() {
                           </ul>
                         ))
                       : []}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
