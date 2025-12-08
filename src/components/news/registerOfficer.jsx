@@ -10,6 +10,7 @@ const RegisterOfficer = () => {
     password: "",
     phone: "",
     address: "",
+    lga: "",
     adminId: "690a0d675a77bf2a88cf5c79", // fixed adminId
   });
   const [loading, setLoading] = useState(false);
@@ -27,13 +28,14 @@ const RegisterOfficer = () => {
     setLoading(true);
 
     const payload = {
-    firstname: formData.name,
-    lastname: formData.name,
+    firstname: formData.firstname,
+    lastname: formData.lastname,
     username: formData.username,
     email: formData.email,
     password: formData.password,
     phone: formData.phone,
     address: formData.address,
+    lga: formData.lga,
     adminId: formData.adminId,
     };
   
@@ -190,6 +192,25 @@ const RegisterOfficer = () => {
             />
           </div>
 
+          {/* Address */}
+          <div>
+            <label
+              htmlFor="address"
+              className="block text-sm font-semibold text-gray-600 mb-1"
+            >
+              LGA
+            </label>
+            <input
+              type="text"
+              id="lga"
+              name="lga"
+              value={formData.lga}
+              onChange={handleChange}
+              required
+              placeholder="123 Main Street, City"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
           {/* Address */}
           <div>
             <label
