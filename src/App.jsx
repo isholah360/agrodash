@@ -38,6 +38,7 @@ import CropsPage from "./components/news/CropsPage";
 import AgroAlliedPage from "./components/news/AgroAlliedPage";
 import Login from "./components/news/Login";
 import SingleOfficer from "./components/news/singleOfficer";
+import RegisterOfficer from "./components/news/registerOfficer";
 
 export default function App() {
   return (
@@ -66,7 +67,8 @@ export default function App() {
           <Route path="/farmers" element={<FarmersPage/>} />
           <Route path="/officers/:id" element={<SingleOfficer/>} />
           <Route path="/farms" element={<Farms />} />
-          <Route path="/addofficer" element={<AddUser />} />
+          {/* <Route path="/addofficer" element={<AddUser />} /> */}
+          <Route path="/addofficer" element={<RegisterOfficer />} />
           <Route path="/createfarm" element={<CreateFarmForm />} />
           <Route path="/createfarmer" element={<CreateFarmer />} />
           <Route path="/farmers/:id" element={<FarmerDetails />} />

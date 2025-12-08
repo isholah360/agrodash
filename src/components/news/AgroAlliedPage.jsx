@@ -18,7 +18,7 @@ const AgroAlliedPage = () => {
       try {
         setLoading(true);
 
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/Agroallied/pro/getall"`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/agroallied/pro/getall"`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
