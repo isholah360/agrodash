@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 const RegisterOfficer = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
     username: "",
     email: "",
     password: "",
@@ -26,7 +27,8 @@ const RegisterOfficer = () => {
     setLoading(true);
 
     const payload = {
-    name: formData.name,
+    firstname: formData.name,
+    lastname: formData.name,
     username: formData.username,
     email: formData.email,
     password: formData.password,
@@ -76,13 +78,31 @@ const RegisterOfficer = () => {
               htmlFor="name"
               className="block text-sm font-semibold text-gray-600 mb-1"
             >
-              Full Name
+              First Name
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              value={formData.name}
+              value={formData.firstname}
+              onChange={handleChange}
+              required
+              placeholder="John Doe"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-semibold text-gray-600 mb-1"
+            >
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.lastname}
               onChange={handleChange}
               required
               placeholder="John Doe"
