@@ -35,7 +35,7 @@ const RegisterOfficer = () => {
     };
 
     try {
-      const res = await fetch("/officer/create", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/officer/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
