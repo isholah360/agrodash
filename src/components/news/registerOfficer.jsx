@@ -35,7 +35,7 @@ const RegisterOfficer = () => {
     };
 
     try {
-      const res = await fetch("/api/farms/create", {
+      const res = await fetch("/officer/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
