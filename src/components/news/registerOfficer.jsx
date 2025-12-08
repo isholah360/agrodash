@@ -82,12 +82,12 @@ const RegisterOfficer = () => {
             </label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="firstname"
+              name="firstname"
               value={formData.firstname}
               onChange={handleChange}
               required
-              placeholder="John Doe"
+              placeholder="John"
               className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
@@ -100,12 +100,12 @@ const RegisterOfficer = () => {
             </label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="lastname"
+              name="lastname"
               value={formData.lastname}
               onChange={handleChange}
               required
-              placeholder="John Doe"
+              placeholder="Doe"
               className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
