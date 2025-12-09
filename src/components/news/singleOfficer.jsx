@@ -77,7 +77,7 @@ const SingleOfficer = () => {
   const { officer, farmers, crops, livestock = [] } = data;
 
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-8">
+    <div className="max-w-6xl mx-auto p-6 space-y-8 pt-30">
       {/* Officer Info */}
       {/* Officer Info */}
       <div className="bg-blue-100 p-6 rounded-xl shadow-lg border border-blue-200">

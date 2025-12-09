@@ -8,7 +8,7 @@ import OfficerDetails from "./components/OfficerDetails";
 import Livestock from "./components/Livestock";
 import Reports from "./components/Reports";
 import FarmerDetails from "./components/FarmerDetails";
-import Addtask from "./page/addTask";
+// import Addtask from "./page/addTask";
 // import Login from "./components/Login";
 import Hero from "../page/Hero";
 import Farms from "../page/Farms";
@@ -39,6 +39,7 @@ import AgroAlliedPage from "./components/news/AgroAlliedPage";
 import Login from "./components/news/Login";
 import SingleOfficer from "./components/news/singleOfficer";
 import RegisterOfficer from "./components/news/registerOfficer";
+import Addtask from "./components/news/addTask";
 
 export default function App() {
   return (
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="/reset-pw" element={<ResetPassword />} />
+           <Route path="/officers/:id" element={<SingleOfficer/>} />
         </Route>
 
         <Route element={<Layout />}>
@@ -65,7 +67,7 @@ export default function App() {
           <Route path="/officer" element={<OfficersPage />} />
           <Route path="/officer/:id" element={<OfficerDetails />} />
           <Route path="/farmers" element={<FarmersPage/>} />
-          <Route path="/officers/:id" element={<SingleOfficer/>} />
+         
           <Route path="/farms" element={<Farms />} />
           {/* <Route path="/addofficer" element={<AddUser />} /> */}
           <Route path="/addofficer" element={<RegisterOfficer />} />
@@ -74,6 +76,7 @@ export default function App() {
           <Route path="/farmers/:id" element={<FarmerDetails />} />
           <Route path="/livestock" element={<Livestock />} />
           <Route path="/reports" element={<Reports />} />
+          {/* <Route path="/notification" element={<Addtask />} /> */}
           <Route path="/notification" element={<Addtask />} />
           <Route path="/login" element={<Login />} />
           <Route path="/crops" element={<CropsPage />} />

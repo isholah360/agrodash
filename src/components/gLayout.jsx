@@ -14,11 +14,14 @@ export default function GLayout() {
 
   const checkAuth = () => {
     try {
-      const token = localStorage.getItem("authToken");
+      const token = localStorage.getItem("token");
+      const name = localStorage.getItem("username");
       if (token) {
         const storedUser = jwtDecode(token);
+     
+        console.log("Decoded user from token:", storedUser, name);
         if (storedUser) {
-          setUser(storedUser.UserId);
+          setUser(name);
         } else {
           setUser(null);
         }
