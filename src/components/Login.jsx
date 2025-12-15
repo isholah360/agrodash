@@ -19,9 +19,10 @@ const Login = () => {
     try {
       const encodedUserName = encodeURIComponent(userName);
       const encodedPassword = encodeURIComponent(password);
+      console.log(import.meta.env.VITE_API_BASE_URL)
 
       const response = await fetch(
-        `/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
+        `api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

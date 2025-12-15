@@ -23,11 +23,20 @@ const AddUser = () => {
 
   console.log(formData.regionid);
 
+  const lagUrl = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_BASE_URL}/v1/Lga/getLgasByRegionId/${formData.regionid}`
+  : `/v1/Lga/getLgasByRegionId/${formData.regionid}`
+
+  const RegionUrl = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_BASE_URL}/v1/Region/GetRegions` 
+  : `api/v1/Region/GetRegions`
+
   useEffect(() => {
     const fetchRegions = async () => {
+      console.log(import.meta.env.VITE_API_BASE_URL)
       try {
         const token = localStorage.getItem("authToken");
-        const response = await fetch(`/api/v1/Region/GetRegions`, {
+        const response = await fetch(`api/v1/Region/GetRegions`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -40,7 +49,9 @@ const AddUser = () => {
         }
 
         const data = await response.json();
+        console.log(data);
         setRegions(data.data.data);
+        console.log(regions)
       } catch (err) {
         setError(err.message);
       } finally {

@@ -9,6 +9,7 @@ const SingleOfficer = () => {
   const [farmsLoading, setFarmsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const baseUrl = import.meta.env.VITE_API_URL || ""
   // ✅ Fetch officer + farmers
   useEffect(() => {
     const fetchOfficerData = async () => {

@@ -36,10 +36,11 @@ import FarmersPage from "./components/news/farmersPage";
 import LivestockPage from "./components/news/LivestockPage";
 import CropsPage from "./components/news/CropsPage";
 import AgroAlliedPage from "./components/news/AgroAlliedPage";
-import Login from "./components/news/Login";
+import Login from "./components/Login";
 import SingleOfficer from "./components/news/singleOfficer";
 import RegisterOfficer from "./components/news/registerOfficer";
-import Addtask from "./components/news/addTask";
+import Addtask from "./components/addTask";
+import CSVViewer from "./components/CSVViewer";
 
 export default function App() {
   return (
@@ -59,6 +60,7 @@ export default function App() {
           <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="/reset-pw" element={<ResetPassword />} />
            <Route path="/officers/:id" element={<SingleOfficer/>} />
+           <Route path="/csv" element={<CSVViewer/>} />
         </Route>
 
         <Route element={<Layout />}>
@@ -69,8 +71,8 @@ export default function App() {
           <Route path="/farmers" element={<FarmersPage/>} />
          
           <Route path="/farms" element={<Farms />} />
-          {/* <Route path="/addofficer" element={<AddUser />} /> */}
-          <Route path="/addofficer" element={<RegisterOfficer />} />
+          <Route path="/addofficer" element={<AddUser />} />
+          {/* <Route path="/addofficer" element={<RegisterOfficer />} /> */}
           <Route path="/createfarm" element={<CreateFarmForm />} />
           <Route path="/createfarmer" element={<CreateFarmer />} />
           <Route path="/farmers/:id" element={<FarmerDetails />} />
