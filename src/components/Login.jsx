@@ -19,7 +19,6 @@ const Login = () => {
     try {
       const encodedUserName = encodeURIComponent(userName);
       const encodedPassword = encodeURIComponent(password);
-      console.log(import.meta.env.VITE_API_BASE_URL)
 
       const response = await fetch(
         `api/v1/User/login?userName=${encodedUserName}&password=${encodedPassword}`,
@@ -33,15 +32,21 @@ const Login = () => {
       if (!response.ok) throw new Error("Invalid credentials");
 
       const loginData = await response.json();
+      console.log(loginData);
       localStorage.setItem("authToken", loginData.data.data);
+      
       const payload = jwtDecode(loginData.data.data);
+      if(loginData.data.message === 'Incorrect password. Please try again.' ){
+        setError(loginData.data.message || "Login Fail!");
+      }
+      
 
       localStorage.setItem("userId", payload.UserId);
       localStorage.setItem("userRole", payload.role);
 
       navigate(payload.role === "1" ? "/dashboard" : "/user");
     } catch (err) {
-      setError(err.message || "Something went wrong.");
+      setError("Wrong Credential.");
     } finally {
       setLoading(false);
     }

@@ -15,12 +15,12 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("authToken");
     const name = localStorage.getItem("username");
     if (token) {
       const payload = jwtDecode(token);
       setUser(payload);
-      setUserName(name);
+      console.log(payload);
     }
   }, []);
   console.log(user);
@@ -99,7 +99,7 @@ const Header = () => {
                 onClick={() => setOpen(!open)}
                 className="bg-transparent text-gray-800 font-semibold focus:outline-none"
               >
-                {userName || "User"}
+                {user?.UserName || "User"}
               </button>
 
               {open && (

@@ -27,11 +27,11 @@ function Home() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchFarms = async () => {
+    const fetchOfficers = async () => {
       try {
         const token = localStorage.getItem("authToken");
 
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/v1/User/GetOfficers`, {
+        const res = await fetch(`api/v1/User/GetOfficers`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -55,11 +55,11 @@ function Home() {
       }
     };
 
-    fetchFarms();
+    fetchOfficers();
   }, []);
 
   useEffect(() => {
-    const fetchFarms = async () => {
+    const fetchLivestock = async () => {
       try {
         const token = localStorage.getItem("authToken");
 
@@ -73,13 +73,13 @@ function Home() {
         });
 
         if (!res.ok) {
-          throw new Error("Failed to fetch farms");
+          throw new Error("Failed to fetch Livestock");
         }
         const result = await res.json();
         setLivestock(result.data.data);
         setError("");
       } catch (err) {
-        console.error("Error fetching farms:", err);
+        console.error("Error fetching Livestock:", err);
         setError(err.message || "An error occurred");
         setLivestock([]);
       } finally {
@@ -87,7 +87,7 @@ function Home() {
       }
     };
 
-    fetchFarms();
+    fetchLivestock();
   }, []);
 
   useEffect(() => {

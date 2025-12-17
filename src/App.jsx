@@ -95,24 +95,36 @@ export default function App() {
   );
 }
 
-{/* <Route
-  element={
-    <ProtectedRoute>
-      <Layout />
-    </ProtectedRoute>
-  }
->
-  <Route path="/dashboard" element={<Home />} />
-  <Route path="/officer" element={<Officer />} />
-  <Route path="/officer/:id" element={<OfficerDetails />} />
-  <Route path="/farmers" element={<Farmers />} />
-  <Route path="/farms" element={<Farms />} />
-  <Route path="/adduser" element={<AddUser />} />
-  <Route path="/createfarm" element={<CreateFarmForm />} />
-  <Route path="/createfarmer" element={<CreateFarmer />} />
-  <Route path="/farmers/:id" element={<FarmerDetails />} />
-  <Route path="/livestock" element={<Livestock />} />
-  <Route path="/reports" element={<Reports />} />
-  <Route path="/notification" element={<Addtask />} />
-  <Route path="/login" element={<Login />} />
-</Route>; */}
+// { <Route
+//   element={
+//     <ProtectedRoute>
+//       <Layout />
+//     </ProtectedRoute>
+//   }
+// >
+//   {/* <Route path="/" element={<Hero />} /> */}
+//           <Route path="/dashboard" element={<Home />} />
+//           <Route path="/officer" element={<Officer />} />
+//           <Route path="/officer/:id" element={<OfficerDetails />} />
+//           <Route path="/farmers" element={<Farmers/>} />
+         
+//           <Route path="/farms" element={<Farms />} />
+//           <Route path="/addofficer" element={<AddUser />} />
+//           {/* <Route path="/addofficer" element={<RegisterOfficer />} /> */}
+//           <Route path="/createfarm" element={<CreateFarmForm />} />
+//           <Route path="/createfarmer" element={<CreateFarmer />} />
+//           <Route path="/farmers/:id" element={<FarmerDetails />} />
+//           <Route path="/livestock" element={<Livestock />} />
+//           <Route path="/reports" element={<Reports />} />
+//           {/* <Route path="/notification" element={<Addtask />} /> */}
+//           <Route path="/notification" element={<Addtask />} />
+//           <Route path="/login" element={<Login />} />
+//           <Route path="/crops" element={<Crops />} />
+//           <Route path="/livestocks" element={<Livestocks />} />
+//           <Route path="/feeds" element={<Feeds />} />
+//           <Route path="/processors" element={<AgroAlliedPage />} />
+//           <Route path="/adminProfile" element={<Admin />} />
+//           <Route path="/association/create" element={<Association />} />
+//           <Route path="/association/list" element={<AssoList/>} />
+//           <Route path="/associations/edit/:id" element={<EditAsso/>} />
+// </Route>; }
