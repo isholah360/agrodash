@@ -8,6 +8,8 @@ import Officer from "./Officer";
 import TaskCard from "./TaskCard";
 import Tracker from "./Tracker";
 import ChartCard from "./ChartCard";
+import Csv from "./news/csv";
+import DashboardPage from "./charts/DashboardPage";
 // import CSVViewer from "./CSVViewer";
 const colors = {
   pink: "bg-pink-500",
@@ -215,6 +217,8 @@ function Home() {
               </h3>
               <ProjectTable />
             </div>
+            
+            <DashboardPage />
             <div className="bg-white rounded-xl flex shadow-sm border border-gray-200 p-5 mt-10">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                 <ChartCard />
@@ -239,6 +243,8 @@ function Home() {
                 </div>
               </div>
             </div>
+           
+            
           </>
         )}
       </main>

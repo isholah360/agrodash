@@ -82,7 +82,7 @@ export default function App() {
           <Route path="/notification" element={<Addtask />} />
           <Route path="/login" element={<Login />} />
           <Route path="/crops" element={<Crops />} />
-          <Route path="/livestocks" element={<Livestocks />} />
+          <Route path="/livestocks" element={<Livestock />} />
           <Route path="/feeds" element={<Feeds />} />
           <Route path="/processors" element={<AgroAlliedPage />} />
           <Route path="/adminProfile" element={<Admin />} />
