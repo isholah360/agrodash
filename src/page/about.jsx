@@ -43,28 +43,38 @@ export default function About() {
         <div className="flex flex-col lg:flex-row gap-8 items-center">
           {/* Left Column: Text Content */}
           <div className="lg:w-1/2 space-y-6">
-            <h2 className="text-xl font-semibold text-blue-600">
+            {/* <h2 className="text-xl font-semibold text-blue-600">
               Lorem ipsum dolor
-            </h2>
+            </h2> */}
             <p className="text-gray-700 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
-              nisl est cursus fermentum sed non augue. Ut fringilla quam ut
-              cursus hendrerit. Praesent lobortis consequat eros vitae
-              hendrerit. Phasellus ut laoreet metus, pellentesque dapibus
-              tortor.
+              At the heart of Oyo State lies vast, fertile land and generations
+              of hardworking farmers — yet for decades agriculture remained
+              largely subsistence: small farms, hard labor, little access to
+              mechanization, limited infrastructure and inconsistent support.
+              Recognizing the enormous untapped potential, the Oyo State
+              Government committed to transform agriculture from subsistence
+              farming into a vibrant, commercial and modern industry.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Donec augue orci, consequat ac erat eu, lobortis sollicitudin
-              massa. Praesent ac tincidunt ipsum, quis rhoncus massa.
-              Suspendisse at augue nec porta. Etiam tempus ornare nulla,
-              accumsan interdum libero tincidunt id.
+              The Oyo State Ministry of Agriculture & Rural Development exists
+              to turn that vision into reality. Our mandate is to shape
+              policies, provide support, and deliver programs that uplift the
+              agricultural sector — transforming lives, communities, and the
+              economy.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
-              nisl est cursus fermentum sed non augue. Ut fringilla quam ut
-              cursus hendrerit. Praesent lobortis consequat eros vitae
-              hendrerit. Phasellus ut laoreet metus, pellentesque dapibus
-              tortor.
+              Over the years, the Ministry has evolved. From the earlier days of
+              the rural-extension driven Oyo State Agricultural Development
+              Programme (OYSADEP), which provided vital extension services to
+              smallholder farmers, to the present — under a renewed strategic
+              focus on agribusiness, technology, value-chain development and
+              infrastructure.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              Our transformation drive deepened when the state doubled down on
+              agriculture as a cornerstone of economic diversification. Backed
+              by visionary leadership, our policies have placed the agricultural
+              sector at the center of Oyo’s growth agenda.
             </p>
             <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg flex items-center gap-2 transition">
               Connect us
@@ -84,15 +94,9 @@ export default function About() {
           </div>
 
           <div className="lg:w-1/2 relative">
-            <div className="absolute top-0 right-0 w-48 h-32 md:w-64 md:h-40 bg-gray-200 rounded-lg overflow-hidden shadow-md">
-              <img
-                src="/farm3.jpeg"
-                alt="Laptop and coffee"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            
 
-            <div className="relative w-full h-64 md:h-80 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+            <div className="relative w-full h-[60-vh] bg-gray-200 rounded-lg overflow-hidden shadow-lg">
               <img
                 src="/farm4.jpeg"
                 alt="Team collaboration"
