@@ -56,16 +56,17 @@ const Hero = () => {
       
           <div className="md:w-1/2 space-y-6 mt-10">
             <h1 className="text-4xl mt-10 md:text-5xl font-bold text-gray-900 leading-tight">
-              Revolutionizing Agriculture through{" "}
-              <span className="text-green-600">Technology in OYO State</span>
+             Powering Data-Driven{" "}
+              <span className="text-green-600">Agriculture in OYO State</span>
             </h1>
             <p className="text-gray-600 text-lg">
-              Founded by a team of passionate educators and tech enthusiasts,
-              blends innovative technology.
+              Managing farmers, farms, programmes, and services on one unified platform.
             </p>
             <div className="flex items-center mt-[4rem]">
               <button className="bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-full font-semibold flex items-center space-x-2">
-                <span>Get Started</span>
+                <Link to="/whatwedo">
+                <span>Learn More</span></Link> 
+                
               </button>
               <span className="bg-black rounded-full p-2 text-2xl text-white">
                 {" "}
@@ -76,7 +77,9 @@ const Hero = () => {
           </div>
           <div className="hidden lg:block absolute right-0 bottom-[8rem]">
             <button className="flex items-center space-x-2 text-green-400 font-semibold text-xl">
-              <span className="text-white text-xl font-bold">Explore More</span>
+             
+                   <Link to="/whatwedo">
+                 <span className="text-white text-xl font-bold">Explore More</span></Link> 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-10 w-10"

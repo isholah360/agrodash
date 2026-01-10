@@ -152,6 +152,37 @@ function Home() {
     fetchNotification();
   }, []);
 
+    useEffect(() => {
+      const fetchFarmers = async () => {
+        try {
+          const token = localStorage.getItem("authToken");
+          const Id = localStorage.getItem("userId");
+          setTheiD(Id);
+  
+          const response = await fetch(`/api/v1/Farmer/GetFarmers`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+  
+          if (!response.ok) {
+            throw new Error(`Failed to fetch farmers: ${response.status}`);
+          }
+  
+          const data = await response.json();
+          setFarmers(data.data.data);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchFarmers();
+    }, []);
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64 text-green-700 text-lg font-semibold">

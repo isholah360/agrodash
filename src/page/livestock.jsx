@@ -37,7 +37,7 @@ const Livestocks = () => {
         setError(err.message || "An error occurred");
         setFarms([]);
       } finally {
-        setLoading(false);
+        setLoading(false);``
       }
     };
 

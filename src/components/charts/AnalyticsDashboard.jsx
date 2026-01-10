@@ -127,29 +127,29 @@ export default function AnalyticsDashboard({ allData }) {
       <KPIGrid allData={allData} />
 
       {/* ---------------- COMBINED ---------------- */}
-      <Section title="🌍 All Enterprises – Commodity Distribution">
-        <BarChartComponent data={commodityData} />
+      <Section title="🌍 Top – Commodity Distribution">
+        <BarChartComponent data={commodityData} yAxisLabel="Farm Size (acre)" xAxisLabel="Top commodities" />
         <PieChartComponent data={commodityData} />
       </Section>
 
       <Section title="🏷️ Enterprise Type Distribution">
-        <BarChartComponent data={enterpriseData} />
+        <BarChartComponent data={enterpriseData} yAxisLabel="Numbers of enterprise" xAxisLabel="Type of Enterprise"  />
         <PieChartComponent data={enterpriseData} />
       </Section>
 
       {/* ---------------- PER ENTERPRISE ---------------- */}
       <Section title="🌱 Crop Commodities">
-        <BarChartComponent data={cropData} />
+        <BarChartComponent data={cropData} yAxisLabel="Numbers of Crops" xAxisLabel="Type of Crop"  />
         <PieChartComponent data={cropData} />
       </Section>
 
       <Section title="🏭 Agro-Allied Commodities">
-        <BarChartComponent data={agroAlliedData} />
+        <BarChartComponent data={agroAlliedData} yAxisLabel="Numbers of AgroAllied" xAxisLabel="Type of AgroAllied" />
         <PieChartComponent data={agroAlliedData} />
       </Section>
 
       <Section title="🐄 Livestock Commodities">
-        <BarChartComponent data={livestockData} />
+        <BarChartComponent data={livestockData} yAxisLabel="Numbers of Livestocks" xAxisLabel="Type of Livestocks" />
         <PieChartComponent data={livestockData} />
       </Section>
 
