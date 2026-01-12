@@ -7,10 +7,10 @@ const StatsSection = () => {
       <div className="container mx-auto mb-12 pt-8 w-full">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: "32+", label: "Year of Experience" },
-            { value: "182+", label: "Field in Progress" },
-            { value: "134 K", label: "Farmer Around the World" },
-            { value: "$15 Billion", label: "Agriculture Profit" },
+            { value: "50+", label: "Year of Experience" },
+            { value: "100+", label: "Farms being monitored" },
+            { value: "134 K", label: "Farmer Around the State" },
+            { value: "2345677+", label: "hectares of land monitored" },
           ].map((stat, index) => (
             <div key={index} className="p-4">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900">

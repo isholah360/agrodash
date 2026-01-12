@@ -25,7 +25,7 @@ const Footer = () => {
             Smart Technology – Connecting Farmers to a Smarter Tomorrow.
           </h2>
           <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full flex items-center space-x-2 transition-colors">
-            <span>Contact Us</span>
+            <Link to="https://docs.google.com/forms/d/1Gfn1TYWR6Fm_RZExVCCW6wIOu4YGzlEzSnJ9308K61Q/viewform?edit_requested=true"> <span>Contact Us</span></Link>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -61,23 +61,23 @@ const Footer = () => {
           </div>
           <ul className="flex w-full space-x-5 mt-5 ml-3">
             <li>
-              <Link href="#about" className="hover:text-green-400">
+              <Link to="/" className="hover:text-green-400">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="#mission" className="hover:text-green-400">
+              <Link to="/about" className="hover:text-green-400">
                 About
               </Link>
             </li>
             <li>
-              <Link href="#stories" className="hover:text-green-400">
+              <Link to="/whatwedo" className="hover:text-green-400">
                 What we do
               </Link>
             </li>
             <li>
-              <Link href="#careers" className="hover:text-green-400">
-                Sustainabilty
+              <Link to ="/departments" className="hover:text-green-400">
+                Departments
               </Link>
             </li>
           </ul>
@@ -85,7 +85,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-12 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-        <p>Isholah © 2025. All rights reserved.</p>
+        <p>Deepfly Tech Labs @ 2025. All rights reserved.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
           <a href="#privacy" className="hover:text-white">
             Privacy & Policy
