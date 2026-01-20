@@ -72,7 +72,7 @@ export default function ImageCarousel() {
       department: "Director, Animal Husbandry Services",
     },
     {
-      image: "/olatoye.jpg",
+      image: "/olatoye.JPG",
       name: "Olatoye, W. A",
       department: "Director, Agricultural Extension Services",
     },
