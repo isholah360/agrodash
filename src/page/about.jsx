@@ -94,11 +94,9 @@ export default function About() {
           </div>
 
           <div className="lg:w-1/2 relative">
-            
-
             <div className="relative w-full h-[60-vh] bg-gray-200 rounded-lg overflow-hidden shadow-lg">
               <img
-                src="/farm4.jpeg"
+                src="/oyoc.jpeg"
                 alt="Team collaboration"
                 className="w-full h-full object-cover"
               />
@@ -120,7 +118,7 @@ export default function About() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-16">
-          <div className="md:w-1/3 space-y-4">
+          <div className="md:w-1/2 space-y-4">
             <div className="flex items-center gap-4">
               <span className="text-5xl md:text-6xl font-black text-gray-800">
                 01
@@ -131,11 +129,24 @@ export default function About() {
               </h2>
             </div>
             <p className="text-gray-600 leading-relaxed">
-              An accomplished lawyer driven by a vision to deliver exceptional
-              legal solutions that address diverse client needs. Barr.
-              Olasunkanmi’s expertise in corporate law and legal strategy
-              ensures that every case is handled with the highest standards of
-              integrity and excellence.
+              Olasunkanmi Aremu Olaleye, Esq. is a Nigerian lawyer and public
+              administrator with over three decades of professional and
+              political experience. He earned his LL.B from the University of
+              Lagos in 1992 and an LL.M in 2017, and was called to the Nigerian
+              Bar in 1993. A prince of Iresa-Adu in Surulere Local Government
+              Area of Oyo State, he began his legal career in 1995, working at
+              Popoola and Olajumoke & Co. before establishing his own law firm,
+              Kanmi Olaleye Chambers, which he led during various periods
+              between 2001 and 2019.
+              <p className="mt-4">
+                His political career began in 2006 as a member of the Oyo State
+                Land Use and Allocation Committee. He later served as Chairman
+                of the Oyo State Independent Electoral Commission (2007–2011).
+                Between 2019 and 2023, he served as Commissioner in four
+                ministries under Governor Seyi Makinde, and he currently serves
+                as the Commissioner for Agriculture and Rural Development in Oyo
+                State.
+              </p>
             </p>
           </div>
 
@@ -152,7 +163,7 @@ export default function About() {
         </div>
 
         <div className="flex flex-col md:flex-row-reverse justify-center items-center gap-8">
-          <div className="md:w-1/3 space-y-4">
+          <div className="md:w-1/2 space-y-4">
             <div className="flex items-center gap-8">
               <span className="text-5xl md:text-6xl font-black text-gray-800">
                 02
@@ -163,11 +174,28 @@ export default function About() {
               </h2>
             </div>
             <p className="text-gray-600 leading-relaxed">
-              A seasoned marketing expert, is a driving force behind Artemis,
-              co-founding the company to elevate customer experience and brand
-              identity. Leveraging her expertise in storytelling and
-              communication, Sophia ensures that we stand out as a trusted
-              advisor for clients.
+              Mrs. Abosede Esther Owoeye is a seasoned public servant with over
+              30 years of experience in the Oyo State Civil Service. She holds
+              Bachelor’s and Master’s degrees in Economics, as well as
+              Postgraduate Diplomas in Education and Statistics from the
+              University of Ibadan. She has held key leadership roles at the Oyo
+              State Universal Basic Education Board (SUBEB), including Director
+              of Planning, Research, and Statistics, and Director of Standards
+              and Quality Assurance, where she led strategic planning, managed
+              education intervention funds, coordinated teacher development
+              programmes, and supervised quality assurance across all local
+              government areas. 
+              <p className="mt-4">
+                Renowned for her expertise in strategic
+              planning, policy implementation, education management, and public
+              administration, Mrs. Owoeye has participated in numerous local and
+              international capacity-building programmes. She is widely regarded
+              as a dedicated and professional administrator and currently serves
+              as the Permanent Secretary, Ministry of Agriculture and Rural
+              Development, providing strategic leadership in advancing
+              agricultural development and food security in Oyo State.
+              </p>
+              
             </p>
           </div>
 

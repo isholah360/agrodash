@@ -18,7 +18,7 @@ const HeroCTA = () => {
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
           <button className="bg-emerald-400 hover:bg-emerald-500 text-white px-6 py-3 rounded-full font-medium transition">
             <Link to="https://docs.google.com/forms/d/1Gfn1TYWR6Fm_RZExVCCW6wIOu4YGzlEzSnJ9308K61Q/viewform?edit_requested=true">
-              Start Your Free Trial <span className="ml-2">↗</span>
+              Download Our App <span className="ml-2">↗</span>
             </Link>
           </button>
           <button className="bg-white text-black border-2 border-white px-6 py-3 rounded-full font-medium transition hover:bg-gray-100">

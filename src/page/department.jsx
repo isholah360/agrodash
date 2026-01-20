@@ -210,7 +210,7 @@ function Department() {
                 class="w-full h-48 object-cover"
               />
               <div class="p-6">
-                <h2 class="text-xl font-semibold text-green-700 mb-3">
+                <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
                   Department of Planning, Research and Statistics
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
@@ -251,7 +251,7 @@ function Department() {
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
                   Oyo State Agricultural Inputs Supply Unit (OYSAISU)
                 </h2>
-                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+                <ul class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
                     Implementation of Government policy as it affects sales and
                     use of agricultural inputs.
@@ -343,7 +343,7 @@ function Department() {
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
                   Regulation and Enforcement
                 </h2>
-                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+                <ul class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
                     Coordinating the execution of the existing rules and
                     regulating governing the use of Agricultural and Natural
@@ -397,7 +397,7 @@ function Department() {
                 <p class="font-semibold mb-2 text-gray-800">
                   Other specific duties include;
                 </p>
-                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+                <ul class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
                     Training and empowerment of farmers at Oyo State-IITA Youth
                     Agribusiness Incubation Park
@@ -458,7 +458,7 @@ function Department() {
                   Western State of Nigeria. It was then known as Fisheries
                   Division. The objectives of the Department are:
                 </p>
-                <ol class="list-[lower-roman] list-inside space-y-2 text-sm text-gray-700">
+                <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
                     To increase fish production by the use of modern methods and
                     techniques to exploit as profitable as possible, the
@@ -561,7 +561,7 @@ function Department() {
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
                   Produce Services
                 </h2>
-                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+                <ul class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
                     Inspecting and grading, under supervision, scheduled crops
                     as well as conducting check-test on such crops.
@@ -644,7 +644,7 @@ function Department() {
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
                   Veterinary Department
                 </h2>
-                <ol class="list-upper-roman list-inside space-y-2 text-sm text-gray-700">
+                <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
                     Carrying out general veterinary duties in Government
                     Veterinary Hospitals, Livestock Stations/Farm,
@@ -719,92 +719,7 @@ function Department() {
               </div>
             </div>
           </section>
-          <section>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition">
-              <img
-                src="/vet.jpeg"
-                alt="Department of Administration and Supplies"
-                class="w-full h-48 object-cover"
-              />
-              <div class="p-6">
-                <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Veterinary Department
-                </h2>
-                <ol class="list-upper-roman list-inside space-y-2 text-sm text-gray-700">
-                  <li>
-                    Carrying out general veterinary duties in Government
-                    Veterinary Hospitals, Livestock Stations/Farm,
-                    Abattoirs/Slabs, Veterinary Clinics, State Veterinary
-                    Diagnostic Laboratories etc;
-                  </li>
-                  <li>
-                    Conduct research into infectious diseases of livestock and
-                    poultry;
-                  </li>
-                  <li>Diagnosing animal and poultry diseases;</li>
-                  <li>
-                    Carrying out Medical and Surgical treatment and advising
-                    livestock and poultry farmers on the various aspects of
-                    controlling the spread of animal diseases;
-                  </li>
-                  <li>
-                    Carrying out ante and post-mortem inspections and meat for
-                    Public Health Purposes;
-                  </li>
-                  <li>
-                    Conducting health examinations of animals, pets and poultry
-                    and issuing health certificates;
-                  </li>
-                  <li>Veterinary Public Health Education;</li>
-                  <li>
-                    Attending Seminars, Workshops and Conferences in Veterinary
-                    and related issues;
-                  </li>
-                  <li>
-                    Overseeing Veterinary Services in Local Government Areas;
-                  </li>
-                  <li>
-                    Conducting Veterinary public health and meat inspection
-                    programmes;
-                  </li>
-                  <li>
-                    Enforcing Veterinary laws and regulations in the State;
-                  </li>
-                  <li>Veterinary Statistical Records;</li>
-                  <li>
-                    Control of animal diseases and pests such as tsetse and
-                    trypanosomiasis in Veterinary Investigation Centre or
-                    Central Diagnostic Laboratory;
-                  </li>
-                  <li>
-                    Controlling Livestock movements and implementing veterinary
-                    extension and information programmes;
-                  </li>
-                  <li>
-                    Issuing veterinary movement/loading permits before removing
-                    animals from any control post and market;
-                  </li>
-                  <li>
-                    Taking charge of out-station diagnostic laboratories or
-                    sections in research and production laboratories;
-                  </li>
-                  <li>
-                    Taking responsibility for veterinary development planning
-                    and research;
-                  </li>
-                  <li>
-                    Advising Government on the formulation, execution and review
-                    of policies and programmes on animal health and related
-                    matters;
-                  </li>
-                  <li>
-                    Liaison with relevant National and International
-                    Organization on veterinary matters.
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </section>
+          
           <section>
             <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition">
               <img
@@ -816,7 +731,7 @@ function Department() {
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
                   Department of Animal Husbandry Services
                 </h2>
-                <ol class="list-[lower-roman] list-inside space-y-2 text-sm text-gray-700">
+                <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>Performing Livestock extension duties;</li>
                   <li>Evaluating data on Livestock related matters;</li>
                   <li>Taking charge of a Livestock Development Project;</li>

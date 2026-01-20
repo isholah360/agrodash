@@ -38,7 +38,7 @@ const Service = () => {
       <div className="flex flex-col px-[5%] md:flex-row items-center gap-8 mb-16 ">
         <div className="relative h-64 bg-gray-200 rounded-xl overflow-hidden">
           <img
-            src="/farm4.jpeg"
+            src="/oyoa.jpeg"
             alt="Farmers working together"
             className="w-full h-full object-cover"
           />
@@ -59,7 +59,7 @@ const Service = () => {
         {/* Team/Farmer Image */}
         <div className="relative h-64 bg-gray-200 rounded-xl overflow-hidden">
           <img
-            src="/farm4.jpeg"
+            src="/oyob.jpeg"
             alt="Farmers working together"
             className="w-full h-full object-cover"
           />

@@ -7,11 +7,6 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 export default function ImageCarousel() {
   const directors = [
     {
-      image: "/h.jpg",
-      name: "Mr. Olatoye W. A",
-      department: "Dir. of Agricultural Engineering Services",
-    },
-    {
       image: "/taofic.jpg",
       name: "Mr Lawal Taofeek Dele",
       department: "Director of Fisheries",
@@ -70,6 +65,21 @@ export default function ImageCarousel() {
       image: "/ezekiel.jpg",
       name: "Mr. Ezekiel O. A.",
       department: "Director, Regulation & Enforcement",
+    },
+    {
+      image: "/jade.jpeg",
+      name: "Jadesimi-Akinloye Olubukola Folahan",
+      department: "Director, Animal Husbandry Services",
+    },
+    {
+      image: "/olatoye.jpeg",
+      name: "Olatoye, W. A",
+      department: "Director, Agricultural Extension Services",
+    },
+    {
+      image: "/eng.jpeg",
+      name: "Engr. Tajudeen Amuda",
+      department: "Director Engineering Services",
     },
   ];
 
