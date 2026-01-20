@@ -25,34 +25,62 @@ function Department() {
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
-                    The Directorate serves as the coordinating unit for the
-                    activities of the thirteen (13) specialized Directorates.
+                    Serving as the coordinating unit for the thirteen (13)
+                    specialized Directorates and overseeing the day-to-day
+                    administration of the Ministry, including inputs into
+                    personnel-related decision-making.
                   </li>
                   <li>
-                    Advises on formulation of policies on agricultural related
-                    issues and ensures execution.
+                    Advising on the formulation of agricultural policies and
+                    ensuring effective implementation of approved policies.
                   </li>
                   <li>
-                    Coordinates Management Meetings and provides administrative
-                    assistance to all ministerial meetings.
-                  </li>
-                  <li>Circulates new circulars from relevant authorities.</li>
-                  <li>
-                    Collates internal and external returns for required
-                    agencies.
-                  </li>
-                  <li>Coordinates training programs and approvals.</li>
-                  <li>
-                    Procures and distributes office items for the Ministry.
-                  </li>
-                  <li>Interprets extant rules and circulars.</li>
-                  <li>
-                    Ensures compliance with due process in projects and
-                    contracts.
+                    Coordinating management meetings, providing administrative
+                    support for ministerial and ad-hoc meetings.
                   </li>
                   <li>
-                    Handles pensions, welfare, promotions, transfers, postings,
-                    and discipline matters.
+                    Circulating official circulars issued by relevant
+                    authorities to appropriate departments and units.
+                  </li>
+                  <li>
+                    Coordinating and collating internal and external returns for
+                    the Ministry and other government agencies as required.
+                  </li>
+                  <li>
+                    Coordinating staff training and capacity-building
+                    programmes, both locally and internationally, and obtaining
+                    necessary approvals.
+                  </li>
+                  <li>
+                    Managing the procurement and distribution of office supplies
+                    and materials for the Ministry.
+                  </li>
+                  <li>
+                    Interpreting and applying extant rules, including General
+                    Orders, Financial Regulations, Civil Service Commission
+                    regulations, and establishment circulars relevant to the
+                    Directorate.
+                  </li>
+                  <li>
+                    Coordinating projects and ensuring compliance with due
+                    process in contract awards.
+                  </li>
+                  <li>
+                    Processing pension documentation and benefits for retiring
+                    officers through the pension and records unit.
+                  </li>
+                  <li>
+                    Managing staff welfare matters, including promotions,
+                    transfers, postings, and leave administration.
+                  </li>
+                  <li>
+                    Ensuring discipline and adherence to civil service rules
+                    within the Ministry.
+                  </li>
+                  <li>Preparing the Ministry’s annual personnel estimates.</li>
+                  <li>
+                    Coordinating the posting and deployment of NYSC members and
+                    students on industrial attachment.
                   </li>
                 </ol>
               </div>
@@ -67,7 +95,7 @@ function Department() {
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Department of FINANCE DEPARTMENT
+                  Department of FINANCE
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -205,7 +233,7 @@ function Department() {
           <section>
             <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition">
               <img
-                src="/statistic.png"
+                src="/stat.png"
                 alt="Department of Administration and Supplies"
                 class="w-full h-48 object-cover"
               />
@@ -249,8 +277,7 @@ function Department() {
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Department of Oyo State Agricultural Inputs Supply Unit
-                  (OYSAISU)
+                  Oyo State Agricultural Inputs Supply Unit (OYSAISU)
                 </h2>
                 <ul class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -451,7 +478,7 @@ function Department() {
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Department of Fisheries Department
+                  Department of Fisheries
                 </h2>
                 <p class="mb-4 text-sm text-gray-700">
                   The Fisheries Department was created in April, 1976, as a
@@ -808,77 +835,110 @@ function Department() {
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
-                    Providing livestock extension and advisory services to
-                    farmers.
+                    Preparation of periodic reports, including:
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                      <li>
+                        Monthly, quarterly, situational, and annual revenue
+                        performance reports.
+                      </li>
+                      <li>Collation of ministry work plans.</li>
+                      <li>
+                        Budget estimates coordination, implementation,
+                        monitoring, and evaluation (M&amp;E).
+                      </li>
+                      <li>
+                        Development of Medium-Term Sector Strategies (MTSS) for
+                        the agricultural sub-sector.
+                      </li>
+                    </ul>
                   </li>
+
                   <li>
-                    Collecting, analyzing, and evaluating data on
-                    livestock-related activities.
+                    Agricultural data, information management, and record
+                    keeping.
                   </li>
+
                   <li>
-                    Managing and supervising livestock development projects.
+                    Seasonal climate prediction activities, including farmer
+                    sensitization in collaboration with NIMET.
                   </li>
+
                   <li>
-                    Conducting livestock research, inventory assessments,
-                    development planning, feasibility studies, and organizing
-                    conferences and seminars.
+                    Agricultural liaison activities, including:
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                      <li>
+                        Coordination of Oyo State Seed Coordinating Council
+                        (OYSSCC) high-level stakeholder meetings.
+                      </li>
+                      <li>
+                        Liaison services and policy review meetings with
+                        agricultural and research institutes.
+                      </li>
+                    </ul>
                   </li>
+
                   <li>
-                    Formulating livestock development policies and programmes.
+                    Coordination of World Food Day celebrations and Farmers’
+                    Festivals.
                   </li>
+
                   <li>
-                    Advising the State Government on livestock development
-                    strategies and plans.
+                    Advocacy engagements, including:
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                      <li>
+                        Meetings with apex farmers’ associations along commodity
+                        lines.
+                      </li>
+                      <li>
+                        Coordination of farmers into sustainable cooperative
+                        groups and associations.
+                      </li>
+                    </ul>
                   </li>
+
                   <li>
-                    Implementing approved livestock development plans and
-                    programmes.
+                    Policy desk management and coordination of Women in
+                    Agriculture (WIA) programmes.
                   </li>
+
                   <li>
-                    Providing pastoral support services, including the
-                    establishment and development of grazing reserves and stock
-                    routes.
+                    Coordination of SAFER programmes, including input
+                    distribution and farmer trainings.
                   </li>
+
                   <li>
-                    Developing pasture, dairy, beef/meat production systems, and
-                    livestock markets.
+                    Coordination and participation in the ECOWAS Aviana West
+                    Africa International Expo.
                   </li>
+
+                  <li>Participation in the National Council on Agriculture.</li>
+
                   <li>
-                    Collaborating with the National Agency for Food and Drug
-                    Administration and Control (NAFDAC) on the import and export
-                    of animals and animal products.
+                    Organization and coordination of farmers’ fairs, expos, and
+                    festival activities.
                   </li>
+
                   <li>
-                    Operating and managing breeding and livestock conservation
-                    centres.
+                    Nutrition desk coordination, including nutrition-sensitive
+                    and food security programmes in the State.
                   </li>
+
                   <li>
-                    Inspecting and assessing raw materials and finished feeds in
-                    feed mills.
-                  </li>
-                  <li>
-                    Regulating feed mills and ensuring quality control of
-                    livestock feeds and raw materials across the State.
-                  </li>
-                  <li>
-                    Developing and enforcing standard operational guidelines for
-                    animal production systems (cattle breeding, piggery,
-                    hatcheries, etc.).
-                  </li>
-                  <li>
-                    Promoting economic empowerment of pastoralists and livestock
-                    farmers.
-                  </li>
-                  <li>
-                    Advising the State Government on private sector
-                    participation in animal production and marketing.
-                  </li>
-                  <li>
-                    Regulating livestock production and improving productivity
-                    standards.
-                  </li>
-                  <li>
-                    Managing and overseeing government-owned livestock farms.
+                    Reporting and documentation responsibilities, including:
+                    <ul class="list-disc list-inside ml-5 space-y-1">
+                      <li>
+                        Preparation of analytical and narrative reports for
+                        senior management.
+                      </li>
+                      <li>
+                        Production of annual reports and statistical summaries
+                        for stakeholders.
+                      </li>
+                      <li>
+                        Coordination and participation in relevant planning and
+                        statistical committees.
+                      </li>
+                    </ul>
                   </li>
                 </ol>
               </div>
