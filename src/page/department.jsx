@@ -66,8 +66,8 @@ function Department() {
                 class="w-full h-48 object-cover"
               />
               <div class="p-6">
-                <h2 class="text-xl font-semibold text-green-700 mb-3">
-                  FINANCE DEPARTMENT
+                <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
+                  Department of FINANCE DEPARTMENT
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -128,8 +128,8 @@ function Department() {
                 class="w-full h-48 object-cover"
               />
               <div class="p-6">
-                <h2 class="text-xl font-semibold text-green-700 mb-3">
-                  RURAL DEVELOPMENT
+                <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
+                  Department of RURAL DEVELOPMENT
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -243,13 +243,14 @@ function Department() {
           <section>
             <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition">
               <img
-                src="/farm1.jpeg"
+                src="/inputs.png"
                 alt="Department of Administration and Supplies"
                 class="w-full h-48 object-cover"
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Oyo State Agricultural Inputs Supply Unit (OYSAISU)
+                  Department of Oyo State Agricultural Inputs Supply Unit
+                  (OYSAISU)
                 </h2>
                 <ul class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -282,13 +283,13 @@ function Department() {
           <section>
             <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition">
               <img
-                src="/farm1.jpeg"
+                src="/ag.png"
                 alt="Department of Administration and Supplies"
                 class="w-full h-48 object-cover"
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Agricultural Engineering
+                  Department of Agricultural Engineering
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -341,7 +342,7 @@ function Department() {
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Regulation and Enforcement
+                  Department of Regulation and Enforcement
                 </h2>
                 <ul class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -381,7 +382,7 @@ function Department() {
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Rural Communities Development Centre (RCDC)
+                  Department of Rural Communities Development Centre (RCDC)
                 </h2>
                 <p class="mb-4 text-sm text-gray-700">
                   The department of RCDC is saddled with the responsibility of
@@ -450,7 +451,7 @@ function Department() {
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Fisheries Department
+                  Department of Fisheries Department
                 </h2>
                 <p class="mb-4 text-sm text-gray-700">
                   The Fisheries Department was created in April, 1976, as a
@@ -508,13 +509,13 @@ function Department() {
           <section>
             <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition">
               <img
-                src="/farm1.jpeg"
+                src="/settle.png"
                 alt="Department of Administration and Supplies"
                 class="w-full h-48 object-cover"
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Crops and Farm Settlement
+                  Department of Crops and Farm Settlement
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -559,7 +560,7 @@ function Department() {
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Produce Services
+                  Department of Produce Services
                 </h2>
                 <ul class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -642,7 +643,7 @@ function Department() {
               />
               <div class="p-6">
                 <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
-                  Veterinary Department
+                  Department of Veterinary Department
                 </h2>
                 <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
                   <li>
@@ -719,7 +720,7 @@ function Department() {
               </div>
             </div>
           </section>
-          
+
           <section>
             <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition">
               <img
@@ -790,6 +791,95 @@ function Department() {
                   </li>
                   <li>Regulation of Livestock Production and Productivity;</li>
                   <li>Taking charge of Government Livestock Farms.</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition">
+              <img
+                src="/ext.png"
+                alt="Department of Administration and Supplies"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h2 class="text-xl font-semibold text-green-700 mb-3 uppercase">
+                  Department of Extension Services
+                </h2>
+                <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                  <li>
+                    Providing livestock extension and advisory services to
+                    farmers.
+                  </li>
+                  <li>
+                    Collecting, analyzing, and evaluating data on
+                    livestock-related activities.
+                  </li>
+                  <li>
+                    Managing and supervising livestock development projects.
+                  </li>
+                  <li>
+                    Conducting livestock research, inventory assessments,
+                    development planning, feasibility studies, and organizing
+                    conferences and seminars.
+                  </li>
+                  <li>
+                    Formulating livestock development policies and programmes.
+                  </li>
+                  <li>
+                    Advising the State Government on livestock development
+                    strategies and plans.
+                  </li>
+                  <li>
+                    Implementing approved livestock development plans and
+                    programmes.
+                  </li>
+                  <li>
+                    Providing pastoral support services, including the
+                    establishment and development of grazing reserves and stock
+                    routes.
+                  </li>
+                  <li>
+                    Developing pasture, dairy, beef/meat production systems, and
+                    livestock markets.
+                  </li>
+                  <li>
+                    Collaborating with the National Agency for Food and Drug
+                    Administration and Control (NAFDAC) on the import and export
+                    of animals and animal products.
+                  </li>
+                  <li>
+                    Operating and managing breeding and livestock conservation
+                    centres.
+                  </li>
+                  <li>
+                    Inspecting and assessing raw materials and finished feeds in
+                    feed mills.
+                  </li>
+                  <li>
+                    Regulating feed mills and ensuring quality control of
+                    livestock feeds and raw materials across the State.
+                  </li>
+                  <li>
+                    Developing and enforcing standard operational guidelines for
+                    animal production systems (cattle breeding, piggery,
+                    hatcheries, etc.).
+                  </li>
+                  <li>
+                    Promoting economic empowerment of pastoralists and livestock
+                    farmers.
+                  </li>
+                  <li>
+                    Advising the State Government on private sector
+                    participation in animal production and marketing.
+                  </li>
+                  <li>
+                    Regulating livestock production and improving productivity
+                    standards.
+                  </li>
+                  <li>
+                    Managing and overseeing government-owned livestock farms.
+                  </li>
                 </ol>
               </div>
             </div>
